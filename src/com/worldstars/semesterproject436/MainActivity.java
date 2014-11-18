@@ -5,7 +5,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 //Adding comment for git test
-
+// Jazmyn Comment
 public class MainActivity extends Activity {
 
     @Override
