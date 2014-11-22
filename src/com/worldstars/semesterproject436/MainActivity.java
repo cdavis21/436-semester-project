@@ -1,151 +1,109 @@
 package com.worldstars.semesterproject436;
 
 import android.app.ActionBar;
-import android.app.ActionBar.Tab;
 import android.app.Activity;
+import android.app.AlertDialog;
 import android.app.Fragment;
-import android.app.FragmentManager;
-import android.app.FragmentTransaction;
-import android.app.ListFragment;
+import android.app.ListActivity;
+import android.content.DialogInterface;
 import android.os.Bundle;
-import android.support.v4.app.FragmentActivity;
-import android.support.v4.app.FragmentPagerAdapter;
-import android.support.v4.view.ViewPager;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.View.OnClickListener;
 import android.view.ViewGroup;
-import android.widget.ArrayAdapter;
-import android.widget.Button;
-import android.widget.ListView;
-import android.widget.TextView;
+import android.widget.EditText;
 //Adding comment for git test
 // Jazmyn Comment
-public class MainActivity extends FragmentActivity {
-    static final int NUM_ITEMS = 10;
-
-    MyAdapter mAdapter;
-
-    ViewPager mPager;
+public class MainActivity extends Activity {
+	public static final String TAG = "Semester Project";
+	
+	public PurchaseAdapter pAdapter;
+	
+	ActionBar.Tab purchasesTab, addNewTab, filterTab;
+        Fragment purchasesFragmentTab = new PurcahsesFragment();
+        Fragment addNewFragmentTab = new AddNewFragment();
+        //Fragment fordFragmentTab = new FordFragmentTab();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         
-        final ActionBar actionBar = getActionBar();
-        mAdapter = new MyAdapter(getSupportFragmentManager());
-
-        mPager = (ViewPager)findViewById(R.id.pager);
-        mPager.setAdapter(mAdapter);
+        // Asking for the default ActionBar element that our platform supports.
+        ActionBar actionBar = getActionBar();
         
-        // Specify that tabs should be displayed in the action bar.
-        actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+                // Screen handling while hiding ActionBar icon.
+                //actionBar.setDisplayShowHomeEnabled(false);
 
-        // Create a tab listener that is called when the user changes tabs.
-        ActionBar.TabListener tabListener = new ActionBar.TabListener() {
-        	@Override
-        	public void onTabSelected(ActionBar.Tab tab, FragmentTransaction ft) {
-                // show the given tab
-            	mPager.setCurrentItem(tab.getPosition());
-            }
+                // Screen handling while hiding Actionbar title.
+                //actionBar.setDisplayShowTitleEnabled(false);
 
-            @Override
-            public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction ft) {
-                // hide the given tab
-            	
-            }
+         // Creating ActionBar tabs.
+         actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 
-            @Override
-            public void onTabReselected(ActionBar.Tab tab, FragmentTransaction ft) {
-                // probably ignore this event
-            }
-        };
+         // Setting custom tab icons.
+         purchasesTab = actionBar.newTab().setText("Purchases");
+         addNewTab = actionBar.newTab().setText("Add New Purchase");
+               // fordTab = actionBar.newTab().setIcon(R.drawable.ford_logo);
+                
+         // Setting tab listeners.
+         purchasesTab.setTabListener(new TabListener(purchasesFragmentTab));
+         addNewTab.setTabListener(new TabListener(addNewFragmentTab));
+               //fordTab.setTabListener(new TabListener(fordFragmentTab));
+               
+          // Adding tabs to the ActionBar.
+          actionBar.addTab(purchasesTab);
+          actionBar.addTab(addNewTab);
+                //actionBar.addTab(fordTab);
+          
+  		//pAdapter = new PurchaseAdapter(getApplicationContext());
+  		//getListView().setAdapter(pAdapter);
 
-        // Add 3 tabs, specifying the tab's text and TabListener
-        String []tab_names = {"Purchases", "Add New Purchase", "Settings"}; 
-        for (int i = 0; i < 3; i++) {
-            actionBar.addTab(
-                    actionBar.newTab()
-                            .setText(tab_names[i])
-                            .setTabListener(tabListener));
-        }
     }
-    
-    public static class MyAdapter extends FragmentPagerAdapter {
-        public MyAdapter(android.support.v4.app.FragmentManager fm) {
-            //super(fm);
-        	super(fm);
-        }
+    public class PurcahsesFragment extends Fragment {
 
-        @Override
-        public int getCount() {
-            return NUM_ITEMS;
-        }
-
-        @Override
-        public android.support.v4.app.Fragment getItem(int position) {
-            return ArrayListFragment.newInstance(position);
-        }
-    }
-    public static class ArrayListFragment extends ListFragment {
-        int mNum;
-
-        /**
-         * Create a new instance of CountingFragment, providing "num"
-         * as an argument.
-         */
-        static android.support.v4.app.Fragment newInstance(int num) {
-            android.support.v4.app.Fragment f = new android.support.v4.app.Fragment();
-
-            // Supply num input as an argument.
-            Bundle args = new Bundle();
-            args.putInt("num", num);
-            f.setArguments(args);
-
-            return f;
-        }
-
-        /**
-         * When creating, retrieve this instance's number from its arguments.
-         */
-        @Override
-        public void onCreate(Bundle savedInstanceState) {
-            super.onCreate(savedInstanceState);
-            mNum = getArguments() != null ? getArguments().getInt("num") : 1;
-        }
-
-        /**
-         * The Fragment's UI is just a simple text view showing its
-         * instance number.
-         */
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
-            View v = inflater.inflate(R.layout.pagerlist, container, false);
-            View tv = v.findViewById(R.id.text);
-            ((TextView)tv).setText("Fragment #" + mNum);
-            return v;
-        }
-
-        @Override
-        public void onActivityCreated(Bundle savedInstanceState) {
-            super.onActivityCreated(savedInstanceState);
-            setListAdapter(new ArrayAdapter<String>(getActivity(),
-                    android.R.layout.simple_list_item_1));
-            //Changed stuff here
-        }
-
-        @Override
-        public void onListItemClick(ListView l, View v, int position, long id) {
-            Log.i("FragmentList", "Item clicked: " + id);
+            View rootView = inflater.inflate(R.layout.purchase, container, false);
+            return rootView;
         }
     }
-    ///////////////////////////////////////
+    public class AddNewFragment extends Fragment {
 
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.pagerlist, container, false);
+            return rootView;
+        }
+    }
+	public AlertDialog itemDialog() {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		
+		final View v = getLayoutInflater().inflate(R.layout.add_item_dialog, null);
+		builder.setView(v);
+		
+		builder.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int id) {
+				Log.i(TAG, "canceled");
+			}
+		});
+		
+		builder.setNegativeButton("Add Item", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int id) {
+				Log.i(TAG, "added new item");
+				String box1 = " " + ((EditText) v.findViewById(R.id.box1)).getText().toString();
+				String box2 = " " + ((EditText) v.findViewById(R.id.box2)).getText().toString();
+				
+				pAdapter.add(new Purchase(box1, box2));
+			}
+		});
+		
+		return builder.create();
+	}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -161,6 +119,7 @@ public class MainActivity extends FragmentActivity {
         // as you specify a parent activity in AndroidManifest.xml.
         int id = item.getItemId();
         if (id == R.id.action_settings) {
+        	itemDialog().show();
             return true;
         }
         return super.onOptionsItemSelected(item);
