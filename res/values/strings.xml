@@ -23,6 +23,8 @@
     <!-- purchases view -->
     <string name="name_label">Name:</string>
     <string name="cost_label">Cost:</string>
+    <string name="category_label">Category:</string>
+    <string name="subcategory_label">Subcategory:</string>
     <!-- end of purchases view -->
 
     <string name="title_activity_detail">DetailActivity</string>

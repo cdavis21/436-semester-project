@@ -55,6 +55,11 @@ public class PurchaseAdapter extends BaseAdapter {
 		final TextView costView = (TextView) purchaseLayout.findViewById(R.id.CostView);
 		costView.setText(currentPurchase.getCost());
 		
+		final TextView categoryView = (TextView) purchaseLayout.findViewById(R.id.CategoryView);
+		categoryView.setText(currentPurchase.getCategory());
+		
+		final TextView subcategoryView = (TextView) purchaseLayout.findViewById(R.id.SubcategoryView);
+		subcategoryView.setText(currentPurchase.getSubcategory());
 		return purchaseLayout;
 	}
 }
