@@ -55,8 +55,9 @@ public class MainActivity extends Activity {
          actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
          
          // Setting custom tab icons.
-         purchasesTab = actionBar.newTab().setText("Purchases");
-         addNewTab = actionBar.newTab().setText("Add New Purchase");
+         //purchasesTab = actionBar.newTab().setText("Purchases");
+         purchasesTab = actionBar.newTab().setIcon(R.drawable.listicon);
+         addNewTab = actionBar.newTab().setIcon(R.drawable.plussign);
          
                // fordTab = actionBar.newTab().setIcon(R.drawable.ford_logo);
                 
