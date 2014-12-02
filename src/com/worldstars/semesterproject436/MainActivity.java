@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
@@ -35,7 +36,7 @@ public class MainActivity extends Activity {
 	ActionBar.Tab purchasesTab, addNewTab, filterTab;
         Fragment purchasesFragmentTab = new PurcahsesFragment();
         Fragment addNewFragmentTab = new AddNewFragment();
-        //Fragment fordFragmentTab = new FordFragmentTab();
+        Fragment filterFragmentTab = new SettingsFragment();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -55,21 +56,19 @@ public class MainActivity extends Activity {
          actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
          
          // Setting custom tab icons.
-         //purchasesTab = actionBar.newTab().setText("Purchases");
          purchasesTab = actionBar.newTab().setIcon(R.drawable.listicon);
          addNewTab = actionBar.newTab().setIcon(R.drawable.plussign);
-         
-               // fordTab = actionBar.newTab().setIcon(R.drawable.ford_logo);
+         filterTab = actionBar.newTab().setIcon(R.drawable.settings);
                 
          // Setting tab listeners.
          purchasesTab.setTabListener(new TabListener(purchasesFragmentTab));
          addNewTab.setTabListener(new TabListener(addNewFragmentTab));
-               //fordTab.setTabListener(new TabListener(fordFragmentTab));
+         filterTab.setTabListener(new TabListener(filterFragmentTab));
                
           // Adding tabs to the ActionBar.
           actionBar.addTab(purchasesTab);
           actionBar.addTab(addNewTab);
-                //actionBar.addTab(fordTab);
+          actionBar.addTab(filterTab);
           
   		pAdapter = new PurchaseAdapter(getApplicationContext());
   		ListView list = (ListView) findViewById(R.id.list);
@@ -80,9 +79,9 @@ public class MainActivity extends Activity {
         @Override
         public View onCreateView(LayoutInflater inflater, ViewGroup container,
                 Bundle savedInstanceState) {
-            //View rootView = inflater.inflate(R.layout.purchase, container, false);
-            //return rootView;
-        	return null;
+            View rootView = inflater.inflate(R.layout.activity_main, container, false);
+            return rootView;
+        	
         }
     }
     public class AddNewFragment extends Fragment {
@@ -94,6 +93,20 @@ public class MainActivity extends Activity {
             //View rootView = inflater.inflate(R.layout.purchase, container, false);
             //return rootView;
         	return null;
+        }
+    }
+    public class SettingsFragment extends Fragment {
+
+        @Override
+        public View onCreateView(LayoutInflater inflater, ViewGroup container,
+                Bundle savedInstanceState) {
+            View rootView = inflater.inflate(R.layout.settings, container, false);
+            return rootView;
+        	/*
+            Intent intent = new Intent(MainActivity.this,SettingsActivity.class);
+        	startActivity(intent);
+        	return null;
+        	*/
         }
     }
 	public AlertDialog itemDialog() {

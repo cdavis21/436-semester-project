@@ -32,23 +32,39 @@ public final class R {
         public static final int ic_launcher=0x7f020000;
         public static final int listicon=0x7f020001;
         public static final int plussign=0x7f020002;
+        public static final int settings=0x7f020003;
     }
     public static final class id {
+        public static final int Button01=0x7f090011;
+        public static final int Button02=0x7f09000f;
+        public static final int Button03=0x7f090010;
+        public static final int Button04=0x7f090012;
+        public static final int Button05=0x7f090013;
         public static final int CategoryLabel=0x7f09000a;
         public static final int CategoryView=0x7f09000b;
+        public static final int CheckBox01=0x7f090017;
         public static final int CostLabel=0x7f090008;
         public static final int CostView=0x7f090009;
         public static final int NameLabel=0x7f090006;
         public static final int NameView=0x7f090007;
         public static final int SubcategoryLabel=0x7f09000c;
         public static final int SubcategoryView=0x7f09000d;
-        public static final int action_settings=0x7f09000e;
+        public static final int TextView01=0x7f090014;
+        public static final int TextView02=0x7f090015;
+        public static final int action_settings=0x7f09001d;
         public static final int activity_main=0x7f090000;
         public static final int box1=0x7f090002;
         public static final int box2=0x7f090003;
         public static final int category_spinner=0x7f090004;
+        public static final int checkBox1=0x7f09001a;
+        public static final int checkBox2=0x7f090019;
+        public static final int checkBox3=0x7f090018;
+        public static final int checkBox4=0x7f090016;
+        public static final int editText1=0x7f09001b;
         public static final int list=0x7f090001;
         public static final int subcategory_spinner=0x7f090005;
+        public static final int textView1=0x7f09000e;
+        public static final int textView2=0x7f09001c;
     }
     public static final class layout {
         public static final int activity_detail=0x7f030000;
@@ -56,6 +72,7 @@ public final class R {
         public static final int add_item_dialog=0x7f030002;
         public static final int pagerlist=0x7f030003;
         public static final int purchase=0x7f030004;
+        public static final int settings=0x7f030005;
     }
     public static final class menu {
         public static final int detail=0x7f080000;
@@ -70,6 +87,8 @@ public final class R {
         /**  options menu: temporary 
          */
         public static final int add_item=0x7f060003;
+        public static final int add_item_string=0x7f06000f;
+        public static final int add_price_string=0x7f060010;
         public static final int app_name=0x7f060000;
         public static final int budget=0x7f060004;
         public static final int category_label=0x7f06000c;
