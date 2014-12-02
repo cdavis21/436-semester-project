@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <TextView
+        android:id="@+id/NameLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:text="@string/name_label" >
+    </TextView>
+
+    <TextView
+        android:id="@+id/NameView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/NameLabel"
+        android:layout_toRightOf="@+id/NameLabel" >
+    </TextView>
+    
+    <TextView
+        android:id="@+id/CostLabel"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentLeft="true"
+        android:layout_below="@+id/NameLabel"
+        android:text="@string/cost_label" >
+    </TextView>
+    
+    <TextView
+        android:id="@+id/CostView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBaseline="@+id/CostLabel"
+        android:layout_toRightOf="@+id/CostLabel" >
+    </TextView>
+</RelativeLayout>
