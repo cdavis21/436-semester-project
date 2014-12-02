@@ -5,6 +5,7 @@ import android.app.Activity;
 import android.app.AlertDialog;
 import android.app.Fragment;
 import android.content.DialogInterface;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.LayoutInflater;
@@ -12,12 +13,22 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.EditText;
 import android.widget.ListView;
+import android.widget.Spinner;
+import android.widget.TextView;
+import android.widget.Toast;
 //Adding comment for git test
 // Jazmyn Comment
 public class MainActivity extends Activity {
 	public static final String TAG = "Semester Project";
+	
+	private static final String CATEGORY_FOOD = "Food";
+	private static final String CATEGORY_ENTERTAINMENT = "Entertainment";
+	private static final String CATEGORY_ELECTRONICS = "Electronics";
+	private static final String CATEGORY_CLOTHES = "Clothes";
 	
 	public PurchaseAdapter pAdapter;
 	
@@ -46,6 +57,7 @@ public class MainActivity extends Activity {
          // Setting custom tab icons.
          purchasesTab = actionBar.newTab().setText("Purchases");
          addNewTab = actionBar.newTab().setText("Add New Purchase");
+         
                // fordTab = actionBar.newTab().setIcon(R.drawable.ford_logo);
                 
          // Setting tab listeners.
@@ -85,10 +97,67 @@ public class MainActivity extends Activity {
     }
 	public AlertDialog itemDialog() {
 		AlertDialog.Builder builder = new AlertDialog.Builder(this);
-		
 		final View v = getLayoutInflater().inflate(R.layout.add_item_dialog, null);
-		builder.setView(v);
 		
+		final Spinner category = (Spinner) v.findViewById(R.id.category_spinner);
+		// Create an ArrayAdapter using the string array and a default spinner layout
+		ArrayAdapter<CharSequence> categoryAdapter = ArrayAdapter.createFromResource(this,
+		        R.array.categories_array, android.R.layout.simple_spinner_item);
+		// Specify the layout to use when the list of choices appears
+		categoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+		// Apply the adapter to the spinner
+		category.setAdapter(categoryAdapter);
+		
+		final Spinner subcategory = (Spinner) v.findViewById(R.id.subcategory_spinner);
+		category.setOnItemSelectedListener(new AdapterView.OnItemSelectedListener() {
+
+			@Override
+			public void onItemSelected(AdapterView<?> parent, View view,
+					int position, long id) {
+				String item = parent.getItemAtPosition(position).toString();
+				
+				if (item.equals(CATEGORY_FOOD)) {
+					// Create an ArrayAdapter using the string array and a default spinner layout
+					ArrayAdapter<CharSequence> subcategoryAdapter = ArrayAdapter.createFromResource(getBaseContext(),
+					        R.array.subcategory_food, android.R.layout.simple_spinner_item);
+					// Specify the layout to use when the list of choices appears
+					subcategoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+					// Apply the adapter to the spinner
+					subcategory.setAdapter(subcategoryAdapter);
+				} else if (item.equals(CATEGORY_CLOTHES)) {
+					// Create an ArrayAdapter using the string array and a default spinner layout
+					ArrayAdapter<CharSequence> subcategoryAdapter = ArrayAdapter.createFromResource(getBaseContext(),
+					        R.array.subcategory_clothes, android.R.layout.simple_spinner_item);
+					// Specify the layout to use when the list of choices appears
+					subcategoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+					// Apply the adapter to the spinner
+					subcategory.setAdapter(subcategoryAdapter);
+				} else if (item.equals(CATEGORY_ELECTRONICS)) {
+					// Create an ArrayAdapter using the string array and a default spinner layout
+					ArrayAdapter<CharSequence> subcategoryAdapter = ArrayAdapter.createFromResource(getBaseContext(),
+					        R.array.subcategory_electronics, android.R.layout.simple_spinner_item);
+					// Specify the layout to use when the list of choices appears
+					subcategoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+					// Apply the adapter to the spinner
+					subcategory.setAdapter(subcategoryAdapter);
+				} else if (item.equals(CATEGORY_ENTERTAINMENT)) {
+					// Create an ArrayAdapter using the string array and a default spinner layout
+					ArrayAdapter<CharSequence> subcategoryAdapter = ArrayAdapter.createFromResource(getBaseContext(),
+					        R.array.subcategory_entertainment, android.R.layout.simple_spinner_item);
+					// Specify the layout to use when the list of choices appears
+					subcategoryAdapter.setDropDownViewResource(android.R.layout.simple_spinner_dropdown_item);
+					// Apply the adapter to the spinner
+					subcategory.setAdapter(subcategoryAdapter);
+				}
+			}
+
+			@Override
+			public void onNothingSelected(AdapterView<?> parent) {
+				// swag
+			}
+		});
+		
+		builder.setView(v);
 		builder.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
 				Log.i(TAG, "canceled");
@@ -100,8 +169,9 @@ public class MainActivity extends Activity {
 				Log.i(TAG, "added new item");
 				String box1 = " " + ((EditText) v.findViewById(R.id.box1)).getText().toString();
 				String box2 = " " + ((EditText) v.findViewById(R.id.box2)).getText().toString();
-				
-				pAdapter.add(new Purchase(box1, box2));
+				String box3 = " " + ((Spinner) v.findViewById(R.id.category_spinner)).getSelectedItem().toString();
+				String box4 = " " + ((Spinner) v.findViewById(R.id.subcategory_spinner)).getSelectedItem().toString();
+				pAdapter.add(new Purchase(box1, box2, box3, box4));
 			}
 		});
 		

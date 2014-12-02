@@ -3,15 +3,21 @@ package com.worldstars.semesterproject436;
 public class Purchase {
 	private String name;
 	private String cost;
+	private String category;
+	private String subcategory;
 	
 	public Purchase() {
 		name = "n/a";
 		cost = "n/a";
+		category = "n/a";
+		subcategory = "n/a";
 	}
 	
-	public Purchase(String name, String cost) {
+	public Purchase(String name, String cost, String category, String subcategory) {
 		this.name = name;
 		this.cost = cost;
+		this.category = category;
+		this.subcategory = subcategory;
 	}
 	
 	public void setName(String name) {
@@ -28,5 +34,21 @@ public class Purchase {
 	
 	public String getCost() {
 		return this.cost;
+	}
+	
+	public void setCategory(String category) {
+		this.category = category;
+	}
+	
+	public String getCategory() {
+		return this.category;
+	}
+	
+	public void setSubcategory(String subcategory) {
+		this.subcategory = subcategory;
+	}
+	
+	public String getSubcategory() {
+		return this.subcategory;
 	}
 }
