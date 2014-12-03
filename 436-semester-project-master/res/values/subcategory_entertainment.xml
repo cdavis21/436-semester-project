@@ -1,0 +1,9 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+	<string-array name="subcategory_entertainment">
+	    <item>Video Game</item>
+	    <item>DVD</item>
+	    <item>Board Game</item>
+	    <item>Book</item>
+	</string-array>       
+</resources>

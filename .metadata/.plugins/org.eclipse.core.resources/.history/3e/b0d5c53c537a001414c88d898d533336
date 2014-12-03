@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    
+    <TextView 
+        android:id="@+id/TitleLabel" 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/title"/>
+    
+    <EditText 
+        android:id="@+id/box1"
+        android:layout_width="match_parent"
+   	 	android:layout_height="match_parent"
+        android:inputType="textEmailAddress"
+        android:hint="@string/item_name" />
+    
+    <EditText 
+        android:id="@+id/box2"
+        android:layout_width="match_parent"
+    	android:layout_height="match_parent"
+        android:inputType="textEmailAddress"
+        android:hint="@string/item_cost" />
+
+	<Spinner 
+	    android:id="@+id/category_spinner"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent" />
+	
+	<Spinner
+	    android:id="@+id/subcategory_spinner"
+	    android:layout_width="match_parent"
+	    android:layout_height="match_parent" />
+</LinearLayout>
