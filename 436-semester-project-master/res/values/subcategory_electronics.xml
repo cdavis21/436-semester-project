@@ -1,9 +1,0 @@
-<?xml version="1.0" encoding="utf-8"?>
-<resources>
-	<string-array name="subcategory_electronics">
-	    <item>Laptop</item>
-	    <item>Television</item>
-	    <item>Sound System</item>
-	    <item>Phone</item>
-	</string-array>       
-</resources>
