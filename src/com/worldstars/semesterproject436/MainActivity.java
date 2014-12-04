@@ -27,7 +27,6 @@ import android.widget.Toast;
 // Jazmyn Comment
 public class MainActivity extends FragmentActivity implements ActionBar.TabListener{
 	public static final String TAG = "Semester Project";
-	private final String FILE_NAME = "PurchasesList.txt";
 	
 	private PurchaseFragment purchaseFrag;
 	private SettingsFragment settingsFrag;

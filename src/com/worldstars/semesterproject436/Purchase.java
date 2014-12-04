@@ -1,6 +1,8 @@
 package com.worldstars.semesterproject436;
 
 public class Purchase {
+	public static final String ITEM_SEP = System.getProperty("line.separator");
+	
 	private String name;
 	private String cost;
 	private String category;
@@ -50,5 +52,10 @@ public class Purchase {
 	
 	public String getSubcategory() {
 		return this.subcategory;
+	}
+	
+	public String toString() {
+		return name + ITEM_SEP + cost + ITEM_SEP + 
+				category + ITEM_SEP + subcategory;
 	}
 }
