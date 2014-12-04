@@ -15,6 +15,9 @@ import android.support.v4.app.ListFragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.AdapterView.OnItemClickListener;
+import android.widget.AdapterView.OnItemLongClickListener;
 import android.widget.ListView;
 import android.widget.Toast;
 
@@ -29,17 +32,80 @@ public class PurchaseFragment extends ListFragment {
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
 		MainActivity.pAdapter = new PurchaseAdapter(getActivity());
-		setListAdapter(MainActivity.pAdapter);	 
+		setListAdapter(MainActivity.pAdapter);
+		
+		/*ListView list = getListView();
+  	    final SwipeDetector swipeDetector = new SwipeDetector();
+  	    list.setOnTouchListener(swipeDetector);
+  	    list.setOnItemClickListener(new OnItemClickListener() {
+  	        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+  	                if (swipeDetector.getAction().equals(Action.RL)){
+  	                    // do the onSwipe action
+  	                	MainActivity.pAdapter.clear();
+  	                	Toast.makeText(getActivity().getApplicationContext(), "swiped right-left!", Toast.LENGTH_LONG).show();
+  	                } else {
+  	                    // do the onItemClick action
+  	                	Toast.makeText(getActivity().getApplicationContext(), "short item click!", Toast.LENGTH_LONG).show();
+  	                }
+  	            }
+  	    });
+  	    list.setOnItemLongClickListener(new OnItemLongClickListener() {
+  	        @Override
+  	        public boolean onItemLongClick(AdapterView<?> parent, View view,int position, long id) {
+  	            if (swipeDetector.getAction().equals(Action.RL)){
+  	                // do the onSwipe action 
+  	            	MainActivity.pAdapter.clear();
+  	            	Toast.makeText(getActivity().getBaseContext(), "swiped!", Toast.LENGTH_LONG).show();
+  	            } else {
+  	                // do the onItemLongClick action
+  	            	Toast.makeText(getActivity().getBaseContext(), "long item click!!", Toast.LENGTH_LONG).show();
+  	            }
+  	            
+  	            return true;
+  	        }
+  	    });
+  	    */
+	}
+	
+	@Override
+	public void onActivityCreated(Bundle savedInstanceBundle) {
+		super.onActivityCreated(savedInstanceBundle);
+		
+		ListView list = getListView();
+  	    final SwipeDetector swipeDetector = new SwipeDetector();
+  	    list.setOnTouchListener(swipeDetector);
+  	    list.setOnItemClickListener(new OnItemClickListener() {
+  	        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+  	                if (swipeDetector.getAction().equals(SwipeDetector.Action.RL)){
+  	                    // do the onSwipe action
+  	                	MainActivity.pAdapter.clear();
+  	                	Toast.makeText(getActivity().getApplicationContext(), "swiped right-left!", Toast.LENGTH_LONG).show();
+  	                } else {
+  	                    // do the onItemClick action
+  	                	Toast.makeText(getActivity().getApplicationContext(), "short item click!", Toast.LENGTH_LONG).show();
+  	                }
+  	            }
+  	    });
+  	    list.setOnItemLongClickListener(new OnItemLongClickListener() {
+  	        @Override
+  	        public boolean onItemLongClick(AdapterView<?> parent, View view,int position, long id) {
+  	            if (swipeDetector.getAction().equals(SwipeDetector.Action.RL)){
+  	                // do the onSwipe action 
+  	            	MainActivity.pAdapter.clear();
+  	            	Toast.makeText(getActivity().getBaseContext(), "swiped!", Toast.LENGTH_LONG).show();
+  	            } else {
+  	                // do the onItemLongClick action
+  	            	Toast.makeText(getActivity().getBaseContext(), "long item click!!", Toast.LENGTH_LONG).show();
+  	            }
+  	            
+  	            return true;
+  	        }
+  	    });
 	}
   
 	@Override
 	public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 		return inflater.inflate(R.layout.list_fragment, container, false);
-	}
-	  
-	@Override
-	public void onListItemClick(ListView list, View v, int position, long id) {
-		Toast.makeText(getActivity(), getListView().getItemAtPosition(position).toString(), Toast.LENGTH_LONG).show();
 	}
 	
 	@Override
