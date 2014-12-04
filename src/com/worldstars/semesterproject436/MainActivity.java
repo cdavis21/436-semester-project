@@ -103,7 +103,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     		getSupportFragmentManager().beginTransaction().replace(R.id.activity_main, purchaseFrag).commit();
     	}else if (tab.getPosition() == 1) {
     		current = 1;  	 
-    	 	getFragmentManager().beginTransaction().replace(R.id.activity_main, addFrag).commit();
+    		getFragmentManager().beginTransaction().replace(R.id.activity_main, addFrag).commit();
     	 	//itemDialog().show();
     	}else{
     		current = 2;
