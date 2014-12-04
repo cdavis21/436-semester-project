@@ -31,5 +31,14 @@
     
     <string name="add_item_string">Name of Item</string>
     <string name="add_price_string">Price</string>
+    
+        <!-- Detail Activity -->
+    
+    <string name="country_1">China:</string>
+    <string name="country_2">Indonesia:</string>
+    <string name="country_3">India:</string>
+    <string name="country_4">Brazil</string>
+    <string name="country_5">Pakistan</string>
+    <!-- end of Detail activity -->
 
 </resources>
