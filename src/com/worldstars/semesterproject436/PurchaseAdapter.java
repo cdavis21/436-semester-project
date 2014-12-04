@@ -7,6 +7,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
@@ -47,7 +48,7 @@ public class PurchaseAdapter extends BaseAdapter {
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
 		final Purchase currentPurchase = (Purchase) getItem(position);
-		RelativeLayout purchaseLayout = (RelativeLayout) LayoutInflater.from(context).inflate(R.layout.purchase, null);
+		LinearLayout purchaseLayout = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.purchase, null);
 		
 		final TextView nameView = (TextView) purchaseLayout.findViewById(R.id.NameView);
 		nameView.setText(currentPurchase.getName());
