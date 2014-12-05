@@ -30,6 +30,16 @@ public class PurchaseAdapter extends BaseAdapter {
 		notifyDataSetChanged();
 	}
 	
+	public void enableRemove(Purchase p) {
+		p.enableRemove();
+		notifyDataSetChanged();
+	}
+	
+	public void disableRemove(Purchase p) {
+		p.disableRemove();
+		notifyDataSetChanged();
+	}
+	
 	@Override
 	public int getCount() {
 		return purchases.size();
@@ -43,6 +53,21 @@ public class PurchaseAdapter extends BaseAdapter {
 	@Override
 	public long getItemId(int pos) {
 		return pos;
+	}
+	
+	@Override
+	public int getViewTypeCount() {
+		return 2;
+	}
+	
+	@Override
+	public int getItemViewType(int position) {
+		Purchase p = (Purchase) getItem(position);
+		if (p.removeIsEnabled()) {
+			return 0;
+		} else {
+			return 1;
+		}
 	}
 	
 	static class ViewHolderPurchase {
@@ -76,12 +101,18 @@ public class PurchaseAdapter extends BaseAdapter {
 		return purchaseLayout;*/
 		
 		ViewHolderPurchase vhp;
+		Purchase currentPurchase = (Purchase) getItem(position);
 		
 		if (convertView == null) {
-			LayoutInflater inflater = ((Activity) context).getLayoutInflater();
-			convertView = inflater.inflate(R.layout.purchase, parent, false);
-			
 			vhp = new ViewHolderPurchase();
+			LayoutInflater inflater = ((Activity) context).getLayoutInflater();
+			
+			if (getItemViewType(position) == 0) {
+				convertView = inflater.inflate(R.layout.delete_purchase, parent, false);
+			} else if (getItemViewType(position) == 1) {
+				convertView = inflater.inflate(R.layout.purchase, parent, false);
+			}
+			
 			vhp.imageView = (ImageView) convertView.findViewById(R.id.imageView1);
 			vhp.nameView = (TextView) convertView.findViewById(R.id.NameView);
 			vhp.costView = (TextView) convertView.findViewById(R.id.CostView);
@@ -93,9 +124,12 @@ public class PurchaseAdapter extends BaseAdapter {
 			vhp = (ViewHolderPurchase) convertView.getTag();
 		}
 		
-		Purchase currentPurchase = (Purchase) getItem(position);
 		if (currentPurchase != null) {
-			vhp.imageView.setImageResource(currentPurchase.getIcon());
+			if (currentPurchase.removeIsEnabled()) {
+				vhp.imageView.setImageResource(R.drawable.delete);
+			} else {
+				vhp.imageView.setImageResource(currentPurchase.getIcon());
+			}
 			vhp.nameView.setText(currentPurchase.getName());
 			vhp.costView.setText(currentPurchase.getCost());
 			vhp.categoryView.setText(currentPurchase.getCategory());
