@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:baselineAligned="false" >
+
+    <LinearLayout
+        android:layout_width="100dp"
+        android:layout_height="fill_parent"
+        android:layout_weight="2"
+        android:orientation="vertical" >
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/NameLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="@string/name_label"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/NameView"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:textColor="@android:color/black" >
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/CostLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="@string/cost_label"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/CostView"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:textColor="@android:color/black" >
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/CategoryLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="@string/category_label"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/CategoryView"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:textColor="@android:color/black" >
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/SubcategoryLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="@string/subcategory_label"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/SubcategoryView"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:textColor="@android:color/black" >
+            </TextView>
+        </LinearLayout>
+    </LinearLayout>
+    
+    <LinearLayout
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:layout_weight="1" >
+
+        <ImageView
+            android:id="@+id/imageView1"
+            android:layout_width="fill_parent"
+            android:layout_height="fill_parent"
+            android:contentDescription="@string/hello_world"
+            android:src="@drawable/ic_launcher" />
+    </LinearLayout>
+</LinearLayout>
