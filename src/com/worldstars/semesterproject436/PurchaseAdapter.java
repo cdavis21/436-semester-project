@@ -2,14 +2,13 @@ package com.worldstars.semesterproject436;
 import java.util.ArrayList;
 import java.util.List;
 
+import android.app.Activity;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
 import android.widget.ImageView;
-import android.widget.LinearLayout;
-import android.widget.RelativeLayout;
 import android.widget.TextView;
 
 
@@ -46,8 +45,17 @@ public class PurchaseAdapter extends BaseAdapter {
 		return pos;
 	}
 	
+	static class ViewHolderPurchase {
+		ImageView imageView;
+		TextView nameView;
+		TextView costView;
+		TextView categoryView;
+		TextView subcategoryView;
+	}
+	
 	@Override
 	public View getView(int position, View convertView, ViewGroup parent) {
+		/*
 		final Purchase currentPurchase = (Purchase) getItem(position);
 		LinearLayout purchaseLayout = (LinearLayout) LayoutInflater.from(context).inflate(R.layout.purchase, null);
 		
@@ -65,6 +73,35 @@ public class PurchaseAdapter extends BaseAdapter {
 		
 		final TextView subcategoryView = (TextView) purchaseLayout.findViewById(R.id.SubcategoryView);
 		subcategoryView.setText(currentPurchase.getSubcategory());
-		return purchaseLayout;
+		return purchaseLayout;*/
+		
+		ViewHolderPurchase vhp;
+		
+		if (convertView == null) {
+			LayoutInflater inflater = ((Activity) context).getLayoutInflater();
+			convertView = inflater.inflate(R.layout.purchase, parent, false);
+			
+			vhp = new ViewHolderPurchase();
+			vhp.imageView = (ImageView) convertView.findViewById(R.id.imageView1);
+			vhp.nameView = (TextView) convertView.findViewById(R.id.NameView);
+			vhp.costView = (TextView) convertView.findViewById(R.id.CostView);
+			vhp.categoryView = (TextView) convertView.findViewById(R.id.CategoryView);
+			vhp.subcategoryView = (TextView) convertView.findViewById(R.id.SubcategoryView);
+			
+			convertView.setTag(vhp);
+		} else {
+			vhp = (ViewHolderPurchase) convertView.getTag();
+		}
+		
+		Purchase currentPurchase = (Purchase) getItem(position);
+		if (currentPurchase != null) {
+			vhp.imageView.setImageResource(currentPurchase.getIcon());
+			vhp.nameView.setText(currentPurchase.getName());
+			vhp.costView.setText(currentPurchase.getCost());
+			vhp.categoryView.setText(currentPurchase.getCategory());
+			vhp.subcategoryView.setText(currentPurchase.getSubcategory());
+		}
+		
+		return convertView;
 	}
 }

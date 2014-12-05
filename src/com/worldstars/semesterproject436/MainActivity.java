@@ -22,6 +22,7 @@ import android.widget.Toast;
 // Jazmyn Comment
 public class MainActivity extends FragmentActivity implements ActionBar.TabListener{
 	public static final String TAG = "Semester Project";
+	public static String USER_NAME = "Flog Gnaw";
 	
 	private PurchaseFragment purchaseFrag;
 	private SettingsFragment settingsFrag;
@@ -66,6 +67,12 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
          actionBar.addTab(actionBar.newTab().setIcon(R.drawable.settings).setTabListener(this));
          
     } 
+    
+    @Override
+    protected void onResume() {
+    	super.onResume();
+    	setTitle(USER_NAME + "'s Diary");
+    }
     
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState) {
