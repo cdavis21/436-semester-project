@@ -191,7 +191,19 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 				String box2 = " " + ((EditText) v.findViewById(R.id.box2)).getText().toString();
 				String box3 = " " + ((Spinner) v.findViewById(R.id.category_spinner)).getSelectedItem().toString();
 				String box4 = " " + ((Spinner) v.findViewById(R.id.subcategory_spinner)).getSelectedItem().toString();
-				pAdapter.add(new Purchase(box1, box2, box3, box4));
+				int image;
+				
+				System.out.println(box3);
+				if(box3.substring(1).compareTo(CATEGORY_ENTERTAINMENT)==0){
+					image = R.drawable.entertainment;
+				}else if(box3.substring(1).compareTo(CATEGORY_CLOTHES) == 0){
+					image = R.drawable.clothes;
+				}else if(box3.substring(1).compareTo(CATEGORY_FOOD)==0){
+					image = R.drawable.food;
+				}else{
+					image = R.drawable.electronics;
+				}
+				pAdapter.add(new Purchase(box1, box2, box3, box4, image));
 			}
 		});
 		

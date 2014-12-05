@@ -7,19 +7,22 @@ public class Purchase {
 	private String cost;
 	private String category;
 	private String subcategory;
+	private int icon;
 	
 	public Purchase() {
 		name = "n/a";
 		cost = "n/a";
 		category = "n/a";
 		subcategory = "n/a";
+		icon = -1;
 	}
 	
-	public Purchase(String name, String cost, String category, String subcategory) {
+	public Purchase(String name, String cost, String category, String subcategory, int icon) {
 		this.name = name;
 		this.cost = cost;
 		this.category = category;
 		this.subcategory = subcategory;
+		this.icon = icon;
 	}
 	
 	public void setName(String name) {
@@ -54,8 +57,16 @@ public class Purchase {
 		return this.subcategory;
 	}
 	
+	public void setIcon(int drawable){
+		this.icon = drawable;
+	}
+	
+	public int getIcon(){
+		return this.icon;
+	}
+	
 	public String toString() {
 		return name + ITEM_SEP + cost + ITEM_SEP + 
-				category + ITEM_SEP + subcategory;
+				category + ITEM_SEP + subcategory + ITEM_SEP + icon;
 	}
 }
