@@ -83,6 +83,7 @@ public class PurchaseFragment extends ListFragment {
   	                } else {
   	                    // do the onItemClick action
   	                	Toast.makeText(getActivity().getApplicationContext(), "short item click!", Toast.LENGTH_LONG).show();
+  	                	System.out.println(MainActivity.pAdapter.getItem(position).toString());
   	                }
   	            }
   	    });
