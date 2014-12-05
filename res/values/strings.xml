@@ -4,6 +4,7 @@
     <string name="app_name">semesterProject436</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="delete_all">Delete all items</string>
 
     <!-- options menu: temporary -->
     <string name="add_item">Add New Item</string>

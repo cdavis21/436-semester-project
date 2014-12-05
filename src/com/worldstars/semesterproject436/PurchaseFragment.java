@@ -76,10 +76,16 @@ public class PurchaseFragment extends ListFragment {
   	    list.setOnTouchListener(swipeDetector);
   	    list.setOnItemClickListener(new OnItemClickListener() {
   	        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+  	        		Purchase p = (Purchase) MainActivity.pAdapter.getItem(position);
+  	        		
   	                if (swipeDetector.getAction().equals(SwipeDetector.Action.RL)){
   	                    // do the onSwipe action
-  	                	MainActivity.pAdapter.clear();
+  	                	//MainActivity.pAdapter.clear();
+  	                	MainActivity.pAdapter.enableRemove(p);
   	                	Toast.makeText(getActivity().getApplicationContext(), "swiped right-left!", Toast.LENGTH_LONG).show();
+  	                } else if (swipeDetector.getAction().equals(SwipeDetector.Action.LR)) {
+  	                	MainActivity.pAdapter.disableRemove(p);
+  	                	Toast.makeText(getActivity().getApplicationContext(), "swiped left-right!", Toast.LENGTH_LONG).show();
   	                } else {
   	                    // do the onItemClick action
   	                	Toast.makeText(getActivity().getApplicationContext(), "short item click!", Toast.LENGTH_LONG).show();
@@ -90,10 +96,13 @@ public class PurchaseFragment extends ListFragment {
   	    list.setOnItemLongClickListener(new OnItemLongClickListener() {
   	        @Override
   	        public boolean onItemLongClick(AdapterView<?> parent, View view,int position, long id) {
+  	        	Purchase p = (Purchase) MainActivity.pAdapter.getItem(position);
   	            if (swipeDetector.getAction().equals(SwipeDetector.Action.RL)){
-  	                // do the onSwipe action 
-  	            	MainActivity.pAdapter.clear();
-  	            	Toast.makeText(getActivity().getBaseContext(), "swiped!", Toast.LENGTH_LONG).show();
+  	            	MainActivity.pAdapter.enableRemove(p);
+  	            	Toast.makeText(getActivity().getBaseContext(), "long swiped right-left!", Toast.LENGTH_LONG).show();
+  	            }  else if (swipeDetector.getAction().equals(SwipeDetector.Action.LR)) {
+  	            	MainActivity.pAdapter.disableRemove(p);
+  	            	Toast.makeText(getActivity().getBaseContext(), "long swiped left-right!", Toast.LENGTH_LONG).show();
   	            } else {
   	                // do the onItemLongClick action
   	            	Toast.makeText(getActivity().getBaseContext(), "long item click!!", Toast.LENGTH_LONG).show();

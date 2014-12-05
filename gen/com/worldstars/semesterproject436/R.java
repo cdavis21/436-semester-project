@@ -30,13 +30,14 @@ public final class R {
     }
     public static final class drawable {
         public static final int clothes=0x7f020000;
-        public static final int electronics=0x7f020001;
-        public static final int entertainment=0x7f020002;
-        public static final int food=0x7f020003;
-        public static final int ic_launcher=0x7f020004;
-        public static final int listicon=0x7f020005;
-        public static final int plussign=0x7f020006;
-        public static final int settings=0x7f020007;
+        public static final int delete=0x7f020001;
+        public static final int electronics=0x7f020002;
+        public static final int entertainment=0x7f020003;
+        public static final int food=0x7f020004;
+        public static final int ic_launcher=0x7f020005;
+        public static final int listicon=0x7f020006;
+        public static final int plussign=0x7f020007;
+        public static final int settings=0x7f020008;
     }
     public static final class id {
         public static final int BrazilLabel=0x7f090010;
@@ -76,6 +77,7 @@ public final class R {
         public static final int checkBox2=0x7f090023;
         public static final int checkBox3=0x7f090022;
         public static final int checkBox4=0x7f090020;
+        public static final int delete_all=0x7f09002b;
         public static final int editText1=0x7f090025;
         public static final int imageView1=0x7f09001a;
         public static final int linearLayout1=0x7f090000;
@@ -100,38 +102,39 @@ public final class R {
         /**  end of options menu 
  dialog text 
          */
-        public static final int TEST_TEXT=0x7f060007;
+        public static final int TEST_TEXT=0x7f060008;
         public static final int action_settings=0x7f060002;
         /**  options menu: temporary 
          */
-        public static final int add_item=0x7f060003;
-        public static final int add_item_string=0x7f060010;
-        public static final int add_price_string=0x7f060011;
+        public static final int add_item=0x7f060004;
+        public static final int add_item_string=0x7f060011;
+        public static final int add_price_string=0x7f060012;
         public static final int app_name=0x7f060000;
-        public static final int budget=0x7f060004;
-        public static final int category_label=0x7f06000d;
-        public static final int cost_label=0x7f06000c;
+        public static final int budget=0x7f060005;
+        public static final int category_label=0x7f06000e;
+        public static final int cost_label=0x7f06000d;
         /**  Detail Activity 
          */
-        public static final int country_1=0x7f060012;
-        public static final int country_2=0x7f060013;
-        public static final int country_3=0x7f060014;
-        public static final int country_4=0x7f060015;
-        public static final int country_5=0x7f060016;
-        public static final int filter=0x7f060005;
+        public static final int country_1=0x7f060013;
+        public static final int country_2=0x7f060014;
+        public static final int country_3=0x7f060015;
+        public static final int country_4=0x7f060016;
+        public static final int country_5=0x7f060017;
+        public static final int delete_all=0x7f060003;
+        public static final int filter=0x7f060006;
         public static final int hello_world=0x7f060001;
-        public static final int item_cost=0x7f06000a;
-        public static final int item_name=0x7f060009;
-        public static final int list=0x7f060006;
+        public static final int item_cost=0x7f06000b;
+        public static final int item_name=0x7f06000a;
+        public static final int list=0x7f060007;
         /**  end of dialog text 
  purchases view 
          */
-        public static final int name_label=0x7f06000b;
-        public static final int subcategory_label=0x7f06000e;
-        public static final int title=0x7f060008;
+        public static final int name_label=0x7f06000c;
+        public static final int subcategory_label=0x7f06000f;
+        public static final int title=0x7f060009;
         /**  end of purchases view 
          */
-        public static final int title_activity_detail=0x7f06000f;
+        public static final int title_activity_detail=0x7f060010;
     }
     public static final class style {
         /** 

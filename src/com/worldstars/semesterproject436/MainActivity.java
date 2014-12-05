@@ -237,6 +237,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         if (id == R.id.action_settings) {
         	itemDialog().show();
             return true;
+        } else if (id == R.id.delete_all) {
+        	pAdapter.clear();
+        	return true;
         }
         return super.onOptionsItemSelected(item);
     }

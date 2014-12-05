@@ -2,6 +2,7 @@ package com.worldstars.semesterproject436;
 
 public class Purchase {
 	public static final String ITEM_SEP = System.getProperty("line.separator");
+	private boolean REMOVE_ENABLED = false;
 	
 	private String name;
 	private String cost;
@@ -63,6 +64,20 @@ public class Purchase {
 	
 	public int getIcon(){
 		return this.icon;
+	}
+	
+	public void enableRemove() {
+		REMOVE_ENABLED = true;
+		System.out.println("Enabled remove for item with data:");
+		System.out.println(this.toString());
+	}
+	
+	public void disableRemove() {
+		REMOVE_ENABLED = false;
+	}
+	
+	public boolean removeIsEnabled() {
+		return REMOVE_ENABLED;
 	}
 	
 	public String toString() {
