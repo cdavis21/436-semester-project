@@ -15,6 +15,7 @@
 
     <!-- dialog text -->
     <string name="TEST_TEXT">THIS IS A TEST OH SNAP</string>
+    <string name="title">Add a new purchase&#8230;</string>
     <string name="item_name">Name</string>
     <string name="item_cost">Cost</string>
     <!-- end of dialog text -->
@@ -32,8 +33,7 @@
     <string name="add_item_string">Name of Item</string>
     <string name="add_price_string">Price</string>
     
-        <!-- Detail Activity -->
-    
+    <!-- Detail Activity -->
     <string name="country_1">China:</string>
     <string name="country_2">Indonesia:</string>
     <string name="country_3">India:</string>
