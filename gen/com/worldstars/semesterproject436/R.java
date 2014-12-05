@@ -29,19 +29,15 @@ public final class R {
         public static final int activity_vertical_margin=0x7f050001;
     }
     public static final class drawable {
-        public static final int ic_launcher=0x7f020000;
-        public static final int listicon=0x7f020001;
-        public static final int plussign=0x7f020002;
-        public static final int settings=0x7f020003;
+        public static final int backtoschool=0x7f020000;
+        public static final int ic_launcher=0x7f020001;
+        public static final int listicon=0x7f020002;
+        public static final int plussign=0x7f020003;
+        public static final int settings=0x7f020004;
     }
     public static final class id {
         public static final int BrazilLabel=0x7f090010;
         public static final int BrazilView=0x7f090011;
-        public static final int Button01=0x7f09001b;
-        public static final int Button02=0x7f09001a;
-        public static final int Button03=0x7f090027;
-        public static final int Button04=0x7f090025;
-        public static final int Button05=0x7f090026;
         public static final int CategoryLabel=0x7f090006;
         public static final int CategoryView=0x7f090007;
         public static final int CheckBox01=0x7f09001f;
@@ -64,6 +60,7 @@ public final class R {
         public static final int TextView02=0x7f09001d;
         public static final int action_settings=0x7f090028;
         public static final int activity_main=0x7f090014;
+        public static final int bluebutton=0x7f09001a;
         public static final int box1=0x7f090015;
         public static final int box2=0x7f090016;
         public static final int category_spinner=0x7f090017;
@@ -72,10 +69,14 @@ public final class R {
         public static final int checkBox3=0x7f090020;
         public static final int checkBox4=0x7f09001e;
         public static final int editText1=0x7f090023;
+        public static final int green=0x7f09001b;
         public static final int linearLayout1=0x7f090000;
+        public static final int purplebutton=0x7f090025;
+        public static final int redbutton=0x7f090027;
         public static final int subcategory_spinner=0x7f090018;
         public static final int textView1=0x7f090019;
         public static final int textView2=0x7f090024;
+        public static final int yellowbutton=0x7f090026;
     }
     public static final class layout {
         public static final int activity_detail=0x7f030000;

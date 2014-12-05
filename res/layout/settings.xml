@@ -19,7 +19,7 @@
         android:textAppearance="?android:attr/textAppearanceSmall" />
 
     <Button
-        android:id="@+id/Button02"
+        android:id="@+id/bluebutton"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,27 +27,29 @@
         android:layout_below="@+id/textView1"
         android:background="#6CB5F4"
         android:minHeight="35dip"
-        android:minWidth="35dip" />
+        android:minWidth="35dip" 
+        android:onClick="pushBlue"/>
 
     <Button
-        android:id="@+id/Button01"
+        android:id="@+id/green"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/Button02"
-        android:layout_alignBottom="@+id/Button02"
+        android:layout_alignBaseline="@+id/bluebutton"
+        android:layout_alignBottom="@+id/bluebutton"
         android:layout_marginLeft="14dp"
-        android:layout_toRightOf="@+id/Button02"
+        android:layout_toRightOf="@+id/bluebutton"
         android:background="#12D04B"
         android:minHeight="35dip"
-        android:minWidth="35dip" />
+        android:minWidth="35dip" 
+        android:onClick="pushGreen"/>
 
     <TextView
         android:id="@+id/TextView01"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/Button02"
-        android:layout_below="@+id/Button02"
+        android:layout_alignLeft="@+id/bluebutton"
+        android:layout_below="@+id/bluebutton"
         android:layout_marginTop="34dp"
         android:text="Edit Diary Name:"
         android:textAppearance="?android:attr/textAppearanceSmall" />
@@ -123,7 +125,7 @@
         android:text="Change Theme" />
 
     <Button
-        android:id="@+id/Button04"
+        android:id="@+id/purplebutton"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -131,31 +133,35 @@
         android:layout_toRightOf="@+id/checkBox4"
         android:background="#CE95F0"
         android:minHeight="35dip"
-        android:minWidth="35dip" />
+        android:minWidth="35dip" 
+        android:onClick="pushPurple"/>
 
     <Button
-        android:id="@+id/Button05"
+        android:id="@+id/yellowbutton"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/Button04"
-        android:layout_alignBottom="@+id/Button04"
+        android:layout_alignBaseline="@+id/purplebutton"
+        android:layout_alignBottom="@+id/purplebutton"
         android:layout_marginLeft="16dp"
-        android:layout_toRightOf="@+id/Button04"
+        android:layout_toRightOf="@+id/purplebutton"
         android:background="#F1D628"
         android:minHeight="35dip"
-        android:minWidth="35dip" />
+        android:minWidth="35dip" 
+        android:onClick="pushYellow"/>
 
     <Button
-        android:id="@+id/Button03"
+        android:id="@+id/redbutton"
         style="?android:attr/buttonStyleSmall"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_above="@+id/TextView01"
         android:layout_marginLeft="14dp"
-        android:layout_toRightOf="@+id/Button05"
+        android:layout_toRightOf="@+id/yellowbutton"
         android:background="#F02536"
         android:minHeight="35dip"
-        android:minWidth="35dip" />
+        android:minWidth="35dip"
+        android:onClick="pushRed"
+         />
 
 </RelativeLayout>

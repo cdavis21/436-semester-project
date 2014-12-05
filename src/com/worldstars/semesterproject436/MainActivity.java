@@ -41,11 +41,14 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	private int current;
 	
 	static PurchaseAdapter pAdapter;
+  	private View v;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+       
+        //getWindow().getDecorView().setBackgroundColor(R.drawable.backtoschool);
         
         purchaseFrag = new PurchaseFragment();
         settingsFrag =  new SettingsFragment();
@@ -72,6 +75,37 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
          actionBar.addTab(actionBar.newTab().setIcon(R.drawable.settings).setTabListener(this));
          
     } 
+    
+    //Change Theme of the app
+    public void pushRed(View view) {
+  
+    	Toast.makeText(getApplicationContext(), "You clicked Red", Toast.LENGTH_SHORT).show();
+    	
+    	//getWindow().getDecorView().setBackgroundColor(Color.parseColor("#FF2233"));
+    	
+      	//v = (View) findViewById(R.id.androidlist);  
+    }
+    
+    public void pushBlue(View view) {
+    	Toast.makeText(getApplicationContext(), "You clicked Blue", Toast.LENGTH_SHORT).show();
+        // Kabloey
+    }
+    
+    public void pushGreen(View view) {
+    	Toast.makeText(getApplicationContext(), "You clicked Green", Toast.LENGTH_SHORT).show();
+        // Kabloey
+    }
+    
+    public void pushYellow(View view) {
+    	Toast.makeText(getApplicationContext(), "You clicked Yellow", Toast.LENGTH_SHORT).show();
+        // Kabloey
+    }
+    
+    public void pushPurple(View view) {
+    	Toast.makeText(getApplicationContext(), "You clicked Purple", Toast.LENGTH_SHORT).show();
+        // Kabloey
+    }
+    
     
     @Override
     public void onRestoreInstanceState(Bundle savedInstanceState) {
