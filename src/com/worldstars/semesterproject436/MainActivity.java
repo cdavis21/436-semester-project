@@ -1,27 +1,22 @@
 package com.worldstars.semesterproject436;
 
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+
 import android.app.ActionBar;
-import android.app.Activity;
 import android.app.AlertDialog;
-import android.app.Fragment;
 import android.app.FragmentTransaction;
 import android.content.DialogInterface;
-import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
-import android.view.ViewGroup;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.EditText;
-import android.widget.ListView;
 import android.widget.Spinner;
-import android.widget.TextView;
 import android.widget.Toast;
 //Adding comment for git test
 // Jazmyn Comment
@@ -187,23 +182,32 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		builder.setNegativeButton("Add Item", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
 				Log.i(TAG, "added new item");
-				String box1 = " " + ((EditText) v.findViewById(R.id.box1)).getText().toString();
-				String box2 = " " + ((EditText) v.findViewById(R.id.box2)).getText().toString();
-				String box3 = " " + ((Spinner) v.findViewById(R.id.category_spinner)).getSelectedItem().toString();
-				String box4 = " " + ((Spinner) v.findViewById(R.id.subcategory_spinner)).getSelectedItem().toString();
+				String itemName = ((EditText) v.findViewById(R.id.box1)).getText().toString();
+				String itemPrice = ((EditText) v.findViewById(R.id.box2)).getText().toString();
+				String itemCategory = ((Spinner) v.findViewById(R.id.category_spinner)).getSelectedItem().toString();
+				String itemSubcategory = ((Spinner) v.findViewById(R.id.subcategory_spinner)).getSelectedItem().toString();
 				int image;
 				
-				System.out.println(box3);
-				if(box3.substring(1).compareTo(CATEGORY_ENTERTAINMENT)==0){
+				System.out.println(itemCategory);
+				if(itemCategory.compareTo(CATEGORY_ENTERTAINMENT)==0){
 					image = R.drawable.entertainment;
-				}else if(box3.substring(1).compareTo(CATEGORY_CLOTHES) == 0){
+				}else if(itemCategory.compareTo(CATEGORY_CLOTHES) == 0){
 					image = R.drawable.clothes;
-				}else if(box3.substring(1).compareTo(CATEGORY_FOOD)==0){
+				}else if(itemCategory.compareTo(CATEGORY_FOOD)==0){
 					image = R.drawable.food;
 				}else{
 					image = R.drawable.electronics;
 				}
-				pAdapter.add(new Purchase(box1, box2, box3, box4, image));
+				
+				Pattern validPricing = Pattern.compile("([0-9]*)(.([0-9]|[0-9][0-9]))");
+				Matcher pricingMatcher = validPricing.matcher(itemPrice);
+				
+				if (pricingMatcher.find()) {
+					pAdapter.add(new Purchase(itemName, itemPrice, itemCategory, itemSubcategory, image));
+				} else {
+					Toast.makeText(getApplicationContext(), "Please enter a valid price! (#.##)", Toast.LENGTH_LONG).show();
+					itemDialog().show();
+				}
 			}
 		});
 		
