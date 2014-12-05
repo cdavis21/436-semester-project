@@ -134,12 +134,14 @@ public class PurchaseFragment extends ListFragment {
 			String cost = null;
 			String category = null;
 			String subcategory = null;
+			String icon = null;
 			
 			while ((name = reader.readLine()) != null) {
 				cost = reader.readLine();
 				category = reader.readLine();
 				subcategory = reader.readLine();
-				MainActivity.pAdapter.add(new Purchase(name, cost, category, subcategory));
+				icon = reader.readLine();
+				MainActivity.pAdapter.add(new Purchase(name, cost, category, subcategory, Integer.parseInt(icon)));
 			}
 		} catch (FileNotFoundException e) {
 			e.printStackTrace();
