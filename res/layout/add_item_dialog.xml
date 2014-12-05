@@ -4,6 +4,14 @@
     android:layout_height="match_parent"
     android:orientation="vertical" >
     
+    <TextView 
+        android:id="@+id/TitleLabel" 
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:gravity="center"
+        android:text="@string/title"
+        android:textAppearance="?android:attr/textAppearanceLarge" />
+    
     <EditText 
         android:id="@+id/box1"
         android:hint="@string/add_item_string"

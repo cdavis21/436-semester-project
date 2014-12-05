@@ -199,7 +199,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 					image = R.drawable.electronics;
 				}
 				
-				Pattern validPricing = Pattern.compile("([0-9]*)(.([0-9]|[0-9][0-9]))");
+				Pattern validPricing = Pattern.compile("^([0-9]*).([0-9][0-9])$");
 				Matcher pricingMatcher = validPricing.matcher(itemPrice);
 				
 				if (pricingMatcher.find()) {
