@@ -162,13 +162,18 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	@Override
 	public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
 		if(current == 0){
-			getSupportFragmentManager().beginTransaction().remove(purchaseFrag).commit(); 
+			if(tab.getPosition()==1){
+				//Detach this view to attach on different view
+				getSupportFragmentManager().beginTransaction().detach(purchaseFrag).commit(); 
+			}else if(tab.getPosition() == 2){
+				getSupportFragmentManager().beginTransaction().remove(purchaseFrag).commit(); 
+			}
 			
 		}else if (current == 1){
 			if(cancel_clicked == false){
 				getFragmentManager().beginTransaction().remove(detailFrag).commit(); 
 			}else{
-				getSupportFragmentManager().beginTransaction().hide(purchaseFrag).commit(); 
+				getSupportFragmentManager().beginTransaction().detach(purchaseFrag).commit(); 
 			}
 		}else{
 			getFragmentManager().beginTransaction().remove(settingsFrag).commit(); 
@@ -182,13 +187,13 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			if(cancel_clicked==false){
 				getSupportFragmentManager().beginTransaction().replace(R.id.activity_main, purchaseFrag).commit();
 			}else{
-				getSupportFragmentManager().beginTransaction().show(purchaseFrag).commit(); 
+				getSupportFragmentManager().beginTransaction().attach(purchaseFrag).commit(); 
 				cancel_clicked = false;
 			}
 			
 		}else if (tab.getPosition() == 1) {
 			current = 1;		
-    		getSupportFragmentManager().beginTransaction().replace(R.id.activity_main,purchaseFrag).commit();
+    		getSupportFragmentManager().beginTransaction().attach(purchaseFrag).commit();
 			itemDialog().show();
 		}else{
 			current = 2;
@@ -268,9 +273,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 				Log.i(TAG, "canceled");
 				
 				cancel_clicked = true;
-				//getSupportFragmentManager().beginTransaction().remove(purchaseFrag).commit(); 
-				//getActionBar().setSelectedNavigationItem(0);
-				//getSupportFragmentManager().beginTransaction().attach(purchaseFrag).commit();
+				getActionBar().selectTab(purchaseTab);
 				
 			}
 		});
