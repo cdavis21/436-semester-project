@@ -4,13 +4,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="horizontal"
+    android:background="@drawable/border"
+    android:paddingBottom="2dp"
+    android:paddingRight="2dp"
     android:baselineAligned="false" >
 
     <LinearLayout
         android:layout_width="100dp"
         android:layout_height="fill_parent"
         android:layout_weight="2"
-        android:orientation="vertical" >
+        android:orientation="vertical" 
+        android:background="#FFF5A5"
+        android:paddingLeft="10dp"
+        android:paddingTop="5dp">
 
         <LinearLayout
             android:layout_width="fill_parent"
@@ -104,6 +110,7 @@
             android:layout_height="fill_parent"
             android:contentDescription="@string/hello_world"
             android:onClick="hackyTest"
+            android:background="#FFF5A5"
             android:src="@drawable/ic_launcher" />
     </LinearLayout>
 </LinearLayout>
