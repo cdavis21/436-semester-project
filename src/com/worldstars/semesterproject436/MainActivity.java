@@ -4,6 +4,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import android.app.ActionBar;
+import android.app.ActionBar.Tab;
 import android.app.AlertDialog;
 import android.app.FragmentTransaction;
 import android.content.DialogInterface;
@@ -35,6 +36,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	private int current;
 	private EditText mEditText;
 	static PurchaseAdapter pAdapter;
+	
+	Tab purchaseTab;
+	boolean cancel_clicked;
 
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -60,11 +64,15 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
 		// Creating ActionBar tabs.
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
+		
+		purchaseTab = actionBar.newTab();
 
 		// For each of the sections in the app, add a tab to the action bar.
-		actionBar.addTab(actionBar.newTab().setIcon(R.drawable.listicon).setTabListener(this));
+		actionBar.addTab(purchaseTab.setIcon(R.drawable.listicon).setTabListener(this));
 		actionBar.addTab(actionBar.newTab().setIcon(R.drawable.plussign).setTabListener(this));
 		actionBar.addTab(actionBar.newTab().setIcon(R.drawable.settings).setTabListener(this));
+		
+		cancel_clicked = false;
 
 	} 
 
@@ -120,7 +128,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	}
 
 
-	@Override
+	/*@Override
 	public void onBackPressed() {
 
 	    if (purchaseFrag.itemClicked == true) { 
@@ -130,7 +138,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	    }else{
 	    	super.onBackPressed();
 	    }
-	}
+	}*/
 
 
 	@Override
@@ -154,9 +162,14 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	@Override
 	public void onTabUnselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
 		if(current == 0){
-			getSupportFragmentManager().beginTransaction().remove(purchaseFrag).commit(); 		
+			getSupportFragmentManager().beginTransaction().remove(purchaseFrag).commit(); 
+			
 		}else if (current == 1){
-			getFragmentManager().beginTransaction().remove(detailFrag).commit(); 		
+			if(cancel_clicked == false){
+				getFragmentManager().beginTransaction().remove(detailFrag).commit(); 
+			}else{
+				getSupportFragmentManager().beginTransaction().hide(purchaseFrag).commit(); 
+			}
 		}else{
 			getFragmentManager().beginTransaction().remove(settingsFrag).commit(); 
 		}
@@ -165,19 +178,20 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	@Override
 	public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {   	
 		if (tab.getPosition() == 0) {   	 
-			current = 0; 
-			purchaseFrag.itemClicked = false;
-			getSupportFragmentManager().beginTransaction().replace(R.id.activity_main, purchaseFrag).commit();
+			current = 0; 	
+			if(cancel_clicked==false){
+				getSupportFragmentManager().beginTransaction().replace(R.id.activity_main, purchaseFrag).commit();
+			}else{
+				getSupportFragmentManager().beginTransaction().show(purchaseFrag).commit(); 
+				cancel_clicked = false;
+			}
+			
 		}else if (tab.getPosition() == 1) {
-			current = 1;
-    		purchaseFrag.itemClicked = false;
-    		
-    		getSupportFragmentManager().beginTransaction().replace(R.id.activity_main, purchaseFrag).commit();
-
+			current = 1;		
+    		getSupportFragmentManager().beginTransaction().replace(R.id.activity_main,purchaseFrag).commit();
 			itemDialog().show();
 		}else{
 			current = 2;
-			purchaseFrag.itemClicked = false;
 			getFragmentManager().beginTransaction().replace(R.id.activity_main, settingsFrag).commit();
 		}
 	}
@@ -252,6 +266,12 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		builder.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
 				Log.i(TAG, "canceled");
+				
+				cancel_clicked = true;
+				//getSupportFragmentManager().beginTransaction().remove(purchaseFrag).commit(); 
+				//getActionBar().setSelectedNavigationItem(0);
+				//getSupportFragmentManager().beginTransaction().attach(purchaseFrag).commit();
+				
 			}
 		});
 

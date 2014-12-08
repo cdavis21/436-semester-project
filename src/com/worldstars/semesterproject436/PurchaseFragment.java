@@ -62,7 +62,7 @@ public class PurchaseFragment extends ListFragment {
 					// do the onItemClick action
 					Toast.makeText(getActivity().getApplicationContext(), "short item click!", Toast.LENGTH_LONG).show();
 					
-					itemClicked = true;
+					/*itemClicked = true;
 					Bundle bundle = new Bundle();
 					bundle.putInt("Icon", p.getIcon());
 					bundle.putString("Cat",p.getCategory());
@@ -71,10 +71,13 @@ public class PurchaseFragment extends ListFragment {
 					bundle.putString("Cost", p.getCost());
 					
 					MainActivity.detailFrag = new DetailFragment();
-					MainActivity.detailFrag.setArguments(bundle);
-
-					getActivity().getSupportFragmentManager().beginTransaction().remove(MainActivity.purchaseFrag).commit();
-					getActivity().getFragmentManager().beginTransaction().replace(R.id.activity_main, MainActivity.detailFrag).commit();
+					MainActivity.detailFrag.setArguments(bundle);*/
+					if(p.itemClicked() == false){
+						MainActivity.pAdapter.setClicked(p);
+					}else{
+						MainActivity.pAdapter.setUnclicked(p);
+					}
+					
 				}
 				
 			}
@@ -93,7 +96,7 @@ public class PurchaseFragment extends ListFragment {
 					// do the onItemLongClick action
 					Toast.makeText(getActivity().getBaseContext(), "long item click!!", Toast.LENGTH_LONG).show();
 
-					itemClicked = true;
+					/*itemClicked = true;
 					Bundle bundle = new Bundle();
 					bundle.putInt("Icon", p.getIcon());
 					bundle.putString("Cat",p.getCategory());
@@ -105,7 +108,12 @@ public class PurchaseFragment extends ListFragment {
 					MainActivity.detailFrag.setArguments(bundle);
 
 					getActivity().getSupportFragmentManager().beginTransaction().remove(MainActivity.purchaseFrag).commit();
-					getActivity().getFragmentManager().beginTransaction().replace(R.id.activity_main, MainActivity.detailFrag).commit();
+					getActivity().getFragmentManager().beginTransaction().replace(R.id.activity_main, MainActivity.detailFrag).commit();*/
+					if(p.itemClicked() == false){
+						MainActivity.pAdapter.setClicked(p);
+					}else{
+						MainActivity.pAdapter.setUnclicked(p);
+					}
 				}
 
 				return true;
