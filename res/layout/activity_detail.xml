@@ -9,163 +9,265 @@
     tools:context="com.worldstars.semesterproject436.DetailActivity" >
 
     <LinearLayout
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/linearLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
         android:orientation="vertical" >
 
         <LinearLayout
-            android:layout_width="wrap_content"
+            android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:layout_marginLeft="20dp"
-            android:layout_marginTop="84dp"
-            android:orientation="vertical" >
-
-            <ImageView
-                android:id="@+id/Cicon"
-                android:layout_width="wrap_content"
-                android:layout_height="match_parent" />
-
-           <TextView
-        android:id="@+id/NameLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:text="@string/name_label" >
-    </TextView>
-
-    <TextView
-        android:id="@+id/NameView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/NameLabel"
-        android:layout_toRightOf="@+id/NameLabel" >
-    </TextView>
-    
-    <TextView
-        android:id="@+id/CostLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/NameLabel"
-        android:text="@string/cost_label" >
-    </TextView>
-    
-    <TextView
-        android:id="@+id/CostView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/CostLabel"
-        android:layout_toRightOf="@+id/CostLabel" >
-    </TextView>
+            android:orientation="horizontal" >
 
             <TextView
-        android:id="@+id/CategoryLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/CostLabel" 
-        android:textColor="@android:color/black" >
-    </TextView>
-   <!--android:text="@string/category_label"  -->
-    <TextView
-        android:id="@+id/CategoryView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/CategoryLabel"
-        android:layout_toRightOf="@+id/CategoryLabel"
-        android:textColor="@android:color/black" >
-    </TextView>
-   
-    <TextView
-        android:id="@+id/SubcategoryLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:layout_below="@+id/CategoryLabel"
-      
-        android:textColor="@android:color/black" >
-    </TextView>
-      <!-- android:text="@string/subcategory_label" -->
-    <TextView
-        android:id="@+id/SubcategoryView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/SubcategoryLabel"
-        android:layout_toRightOf="@+id/SubcategoryLabel"
-        android:textColor="@android:color/black" >
-    </TextView>
-    
+                android:id="@+id/NameLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="@string/name_label"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/NameView"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:textColor="@android:color/black" >
+            </TextView>
         </LinearLayout>
-   
-            
-     <TextView
-        android:id="@+id/ChinaLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:text="@string/country_1" />
-     <TextView
-        android:id="@+id/ChinaView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/ChinaLabel"
-        android:layout_toRightOf="@+id/ChinaLabel"/>
-        
-     
-     <TextView
-        android:id="@+id/IndonesiaLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:text="@string/country_2"/>
-     <TextView
-        android:id="@+id/IndonesiaView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/IndonesiaLabel"
-        android:layout_toRightOf="@+id/IndonesiaLabel"/>
-     <TextView
-        android:id="@+id/IndiaLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:text="@string/country_3" />
-     
-     <TextView
-        android:id="@+id/IndiaView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/IndiaLabel"
-        android:layout_toRightOf="@+id/IndiaLabel"/>
-     <TextView
-        android:id="@+id/BrazilLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:text="@string/country_4" />
-     <TextView
-        android:id="@+id/BrazilView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/BrazilLabel"
-        android:layout_toRightOf="@+id/BrazilLabel"/>
-     <TextView
-        android:id="@+id/PakistanLabel"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignParentLeft="true"
-        android:text="@string/country_5" />
-     <TextView
-        android:id="@+id/PakistanView"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/PakistanLabel"
-        android:layout_toRightOf="@+id/PakistanLabel"/>
-    
-    
-   
-            
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/CostLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="@string/cost_label"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/CostView"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:textColor="@android:color/black" >
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" >
+
+            <TextView
+                android:id="@+id/CategoryLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="@string/category_label"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/CategoryView"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:textColor="@android:color/black" >
+            </TextView>
+        </LinearLayout>
+
+        <LinearLayout
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+
+            <TextView
+                android:id="@+id/SubcategoryLabel"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:text="@string/subcategory_label"
+                android:textColor="@android:color/black" />
+
+            <TextView
+                android:id="@+id/SubcategoryView"
+                android:layout_width="wrap_content"
+                android:layout_height="fill_parent"
+                android:textColor="@android:color/black" >
+            </TextView>
+        </LinearLayout>
     </LinearLayout>
+
+    <TableLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="110dp" >
+
+        <TableRow
+            android:id="@+id/tableRow1"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/BrazilLabel"
+                    android:layout_width="90dp"
+                    android:layout_height="50dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/country_4"
+                    android:textSize="17sp"
+                    android:textColor="@android:color/black" />
+
+                <ImageView
+                    android:id="@+id/imageView2"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:src="@drawable/brazilflag"
+                    android:textColor="@android:color/black" />
+
+                <TextView
+                    android:id="@+id/BrazilView"
+                    android:layout_width="80dp"
+                    android:layout_height="50dp"
+                    android:paddingLeft="10dp"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/ChinaLabel"
+                    android:layout_width="90dp"
+                    android:layout_height="50dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/country_1"
+                    android:textColor="@android:color/black" 
+                    android:textSize="17sp"/>
+
+                <ImageView
+                    android:id="@+id/imageView1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                   
+                    android:src="@drawable/chinaflag" />
+
+                <TextView
+                    android:id="@+id/ChinaView"
+                    android:layout_width="80dp"
+                    android:layout_height="50dp"
+                    android:paddingLeft="10dp"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/IndiaLabel"
+                    android:layout_width="90dp"
+                    android:layout_height="50dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/country_3" 
+                    android:textSize="17sp"
+                    android:textColor="@android:color/black"/>
+
+                <ImageView
+                    android:id="@+id/imageView5"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                   
+                    android:src="@drawable/indiaflag" />
+
+                <TextView
+                    android:id="@+id/IndiaView"
+                    android:layout_width="80dp"
+                    android:layout_height="50dp"
+                    android:paddingLeft="10dp"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/IndonesiaLabel"
+                    android:layout_width="90dp"
+                    android:layout_height="50dp"
+                    android:paddingRight="5dp"
+                    android:text="@string/country_2"
+                    android:textSize="17sp"
+                    android:textColor="@android:color/black" />
+
+                <ImageView
+                    android:id="@+id/imageView3"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:src="@drawable/indonesiaflag" 
+                    />
+
+                <TextView
+                    android:id="@+id/IndonesiaView"
+                    android:layout_width="80dp"
+                    android:layout_height="50dp"
+                    android:paddingLeft="10dp" 
+                    android:textColor="@android:color/black"/>
+            </LinearLayout>
+        </TableRow>
+
+        <TableRow
+            android:id="@+id/tableRow5"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content" >
+
+            <LinearLayout
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content" >
+
+                <TextView
+                    android:id="@+id/PakistanLabel"
+                    android:layout_width="90dp"
+                    android:layout_height="50dp"
+                    android:paddingRight="5dp"
+                    android:textSize="17sp"
+                    android:text="@string/country_5"
+                    android:textColor="@android:color/black" />
+
+                <ImageView
+                    android:id="@+id/imageView6"
+                    android:layout_width="wrap_content"
+                    android:layout_height="50dp"
+                    android:src="@drawable/pakistanflag" />
+
+                <TextView
+                    android:id="@+id/PakistanView"
+                    android:layout_width="80dp"
+                    android:layout_height="50dp"
+                    android:paddingLeft="10dp"
+                    android:textColor="@android:color/black" />
+            </LinearLayout>
+        </TableRow>
+    </TableLayout>
 
 </RelativeLayout>

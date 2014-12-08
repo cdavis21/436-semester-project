@@ -38,8 +38,8 @@
     <string name="country_1">China:</string>
     <string name="country_2">Indonesia:</string>
     <string name="country_3">India:</string>
-    <string name="country_4">Brazil</string>
-    <string name="country_5">Pakistan</string>
+    <string name="country_4">Brazil:</string>
+    <string name="country_5">Pakistan:</string>
     <!-- end of Detail activity -->
 
 </resources>

@@ -1,5 +1,7 @@
 package com.worldstars.semesterproject436;
 
+import android.content.Intent;
+
 public class Purchase {
 	public static final String ITEM_SEP = System.getProperty("line.separator");
 	private boolean REMOVE_ENABLED = false;
@@ -26,6 +28,22 @@ public class Purchase {
 		this.icon = icon;
 	}
 	
+	public Purchase(Intent intent){
+		this.name = intent.getStringExtra("name");
+		this.cost = intent.getStringExtra("cost");
+		this.category = intent.getStringExtra("category");
+		this.subcategory = intent.getStringExtra("subcategory");
+	}
+	
+	public Intent packageToIntent() {
+		Intent intent = new Intent();
+		intent.putExtra("name", name);
+		intent.putExtra("cost", cost);
+		intent.putExtra("category", category);
+		intent.putExtra("subcategory", subcategory);
+		intent.putExtra("icon", icon);
+		return intent;
+	}
 	public void setName(String name) {
 		this.name = name;
 	}
@@ -84,4 +102,35 @@ public class Purchase {
 		return name + ITEM_SEP + cost + ITEM_SEP + 
 				category + ITEM_SEP + subcategory + ITEM_SEP + icon;
 	}
+	
+	public double calculateChina(String cost){
+		Double numCost = Double.parseDouble(cost);
+		numCost *= .6;
+		return numCost* .6 ;
+		
+	}
+	public double calculateBrazil(String cost){
+		Double numCost = Double.parseDouble(cost);
+		numCost *= .6;
+		return numCost* .7 ;
+		
+	}
+	public double calculateIndia(String cost){
+		Double numCost = Double.parseDouble(cost);
+		numCost *= .6;
+		return numCost* .3 ;
+		
+	}public double calculateIndonesia(String cost){
+		Double numCost = Double.parseDouble(cost);
+		numCost *= .6;
+		return numCost* .4 ;
+		
+	}public double calculatePakistan(String cost){
+		Double numCost = Double.parseDouble(cost);
+		numCost *= .6;
+		return numCost* .3 ;
+		
+	}
+	
+	
 }
