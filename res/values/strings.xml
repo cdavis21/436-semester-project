@@ -19,6 +19,7 @@
     <string name="title">Add a new purchase&#8230;</string>
     <string name="item_name">Name</string>
     <string name="item_cost">Cost</string>
+    <string name="delete_title">Delete selected items?</string>
     <!-- end of dialog text -->
 
 
