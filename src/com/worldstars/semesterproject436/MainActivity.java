@@ -106,6 +106,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     	}else if (tab.getPosition() == 1) {
     		current = 1;  	 
     		getFragmentManager().beginTransaction().replace(R.id.activity_main, addFrag).commit();
+    		itemDialog().show();
     	 	//itemDialog().show();
     	}else{
     		current = 2;
@@ -210,7 +211,14 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 				Matcher pricingMatcher = validPricing.matcher(itemPrice);
 				
 				if (pricingMatcher.find()) {
-					pAdapter.add(new Purchase(itemName, itemPrice, itemCategory, itemSubcategory, image));
+						Pattern justDollars = Pattern.compile("^[1-9]+[0-9]*$");
+						Matcher dollarsMatcher = justDollars.matcher(itemPrice);
+						
+						if (dollarsMatcher.find()) {
+							pAdapter.add(new Purchase(itemName, itemPrice + ".00", itemCategory, itemSubcategory, image));
+						} else {
+							pAdapter.add(new Purchase(itemName, itemPrice, itemCategory, itemSubcategory, image));
+						}
 				} else {
 					Toast.makeText(getApplicationContext(), "Please enter a valid price! (#.##)", Toast.LENGTH_LONG).show();
 					itemDialog().show();
