@@ -25,9 +25,10 @@ import android.widget.Toast;
 
 public class PurchaseFragment extends ListFragment {
 	private static final String FILE_NAME = "PurchasesList.txt";
-
+	boolean itemClicked;
+	
 	public PurchaseFragment() {
-
+		this.itemClicked = false;
 	}
 
 	@Override
@@ -60,10 +61,20 @@ public class PurchaseFragment extends ListFragment {
 				} else {
 					// do the onItemClick action
 					Toast.makeText(getActivity().getApplicationContext(), "short item click!", Toast.LENGTH_LONG).show();
-					System.out.println(MainActivity.pAdapter.getItem(position).toString());
-					Intent intent = p.packageToIntent();
-					intent.setClass(getActivity().getApplicationContext(), DetailActivity.class);
-					startActivity(intent);
+					
+					itemClicked = true;
+					Bundle bundle = new Bundle();
+					bundle.putInt("Icon", p.getIcon());
+					bundle.putString("Cat",p.getCategory());
+					bundle.putString("Subcat", p.getSubcategory());
+					bundle.putString("Name", p.getName());
+					bundle.putString("Cost", p.getCost());
+					
+					MainActivity.detailFrag = new DetailFragment();
+					MainActivity.detailFrag.setArguments(bundle);
+
+					getActivity().getSupportFragmentManager().beginTransaction().remove(MainActivity.purchaseFrag).commit();
+					getActivity().getFragmentManager().beginTransaction().replace(R.id.activity_main, MainActivity.detailFrag).commit();
 				}
 				
 			}
@@ -81,9 +92,20 @@ public class PurchaseFragment extends ListFragment {
 				} else {
 					// do the onItemLongClick action
 					Toast.makeText(getActivity().getBaseContext(), "long item click!!", Toast.LENGTH_LONG).show();
-					Intent intent = p.packageToIntent();
-					intent.setClass(getActivity().getApplicationContext(), DetailActivity.class);
-					startActivity(intent);
+
+					itemClicked = true;
+					Bundle bundle = new Bundle();
+					bundle.putInt("Icon", p.getIcon());
+					bundle.putString("Cat",p.getCategory());
+					bundle.putString("Subcat", p.getSubcategory());
+					bundle.putString("Name", p.getName());
+					bundle.putString("Cost", p.getCost());
+					
+					MainActivity.detailFrag = new DetailFragment();
+					MainActivity.detailFrag.setArguments(bundle);
+
+					getActivity().getSupportFragmentManager().beginTransaction().remove(MainActivity.purchaseFrag).commit();
+					getActivity().getFragmentManager().beginTransaction().replace(R.id.activity_main, MainActivity.detailFrag).commit();
 				}
 
 				return true;

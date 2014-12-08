@@ -23,9 +23,9 @@ import android.widget.Toast;
 public class MainActivity extends FragmentActivity implements ActionBar.TabListener{
 	public static final String TAG = "Semester Project";
 
-	private PurchaseFragment purchaseFrag;
+	static PurchaseFragment purchaseFrag;
 	private SettingsFragment settingsFrag;
-	private AddNewFragment addFrag;
+	static DetailFragment detailFrag;
 
 	private static final String CATEGORY_FOOD = "Food";
 	private static final String CATEGORY_ENTERTAINMENT = "Entertainment";
@@ -43,7 +43,6 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
 		purchaseFrag = new PurchaseFragment();
 		settingsFrag =  new SettingsFragment();
-		addFrag = new AddNewFragment();
 
 		//We are on the first tab
 		current = 0;
@@ -121,7 +120,17 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	}
 
 
+	@Override
+	public void onBackPressed() {
 
+	    if (purchaseFrag.itemClicked == true) { 
+	    	getFragmentManager().beginTransaction().remove(detailFrag).commit();
+			getSupportFragmentManager().beginTransaction().replace(R.id.activity_main, purchaseFrag).commit();
+			purchaseFrag.itemClicked = false;
+	    }else{
+	    	super.onBackPressed();
+	    }
+	}
 
 
 	@Override
@@ -147,7 +156,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		if(current == 0){
 			getSupportFragmentManager().beginTransaction().remove(purchaseFrag).commit(); 		
 		}else if (current == 1){
-			getFragmentManager().beginTransaction().remove(addFrag).commit(); 		
+			getFragmentManager().beginTransaction().remove(detailFrag).commit(); 		
 		}else{
 			getFragmentManager().beginTransaction().remove(settingsFrag).commit(); 
 		}
@@ -156,14 +165,19 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	@Override
 	public void onTabSelected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {   	
 		if (tab.getPosition() == 0) {   	 
-			current = 0;   	 
+			current = 0; 
+			purchaseFrag.itemClicked = false;
 			getSupportFragmentManager().beginTransaction().replace(R.id.activity_main, purchaseFrag).commit();
 		}else if (tab.getPosition() == 1) {
-			current = 1;  	 
-			getSupportFragmentManager().beginTransaction().replace(R.id.activity_main, purchaseFrag).commit();
+			current = 1;
+    		purchaseFrag.itemClicked = false;
+    		
+    		getSupportFragmentManager().beginTransaction().replace(R.id.activity_main, purchaseFrag).commit();
+
 			itemDialog().show();
 		}else{
 			current = 2;
+			purchaseFrag.itemClicked = false;
 			getFragmentManager().beginTransaction().replace(R.id.activity_main, settingsFrag).commit();
 		}
 	}
@@ -268,11 +282,28 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 					Pattern justDollars = Pattern.compile("^[1-9]+[0-9]*$");
 					Matcher dollarsMatcher = justDollars.matcher(itemPrice);
 
+					Purchase p;
 					if (dollarsMatcher.find()) {
-						pAdapter.add(new Purchase(itemName, itemPrice + ".00", itemCategory, itemSubcategory, image));
+						p = new Purchase(itemName, itemPrice + ".00", itemCategory, itemSubcategory, image);
+						pAdapter.add(p);
 					} else {
-						pAdapter.add(new Purchase(itemName, itemPrice, itemCategory, itemSubcategory, image));
+						p = new Purchase(itemName, itemPrice, itemCategory, itemSubcategory, image);
+						pAdapter.add(p);
 					}
+					
+					Bundle bundle = new Bundle();
+					bundle.putInt("Icon", p.getIcon());
+					bundle.putString("Cat", p.getCategory());
+					bundle.putString("Subcat", p.getSubcategory());
+					bundle.putString("Name", p.getName());
+					bundle.putString("Cost", p.getCost());
+
+					
+					detailFrag = new DetailFragment();
+					detailFrag.setArguments(bundle);
+					
+					getSupportFragmentManager().beginTransaction().remove(purchaseFrag).commit(); 
+					getFragmentManager().beginTransaction().replace(R.id.activity_main, detailFrag).commit();
 				} else {
 					Toast.makeText(getApplicationContext(), "Please enter a valid price! (#.##)", Toast.LENGTH_LONG).show();
 					itemDialog().show();
