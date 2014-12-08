@@ -220,6 +220,33 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		
 		return builder.create();
 	}
+	
+	public AlertDialog deleteDialog() {
+		AlertDialog.Builder builder = new AlertDialog.Builder(this);
+		final View v = getLayoutInflater().inflate(R.layout.remove_purchases, null);
+		//TextView prompt = (TextView) v.findViewById(R.id.RemovePrompt);
+		
+	/*	if (pAdapter.oneItemIsSelected()) {
+			prompt.setText("Are you sure that you would like to remove the selected purchases?");
+		} else {
+			prompt.setText("Are you sure that you would like to remove all selected purchases?");
+		}*/
+		//prompt.setText("SET TEXT TEST");
+		builder.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int id) {
+				Log.i(TAG, "canceled");
+			}
+		});
+		
+		builder.setNegativeButton("Confirm", new DialogInterface.OnClickListener() {
+			public void onClick(DialogInterface dialog, int id) {
+				Log.i(TAG, "Removing all selected items...");
+				pAdapter.deleteAllSelected();
+			}
+		});
+		
+		return builder.create();
+	}
 
     @Override
     public boolean onCreateOptionsMenu(Menu menu) {
@@ -242,5 +269,9 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
         	return true;
         }
         return super.onOptionsItemSelected(item);
+    }
+    
+    public void hackyTest(View v) {
+    	deleteDialog().show();
     }
 }

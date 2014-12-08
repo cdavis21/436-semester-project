@@ -47,14 +47,14 @@ public final class R {
     public static final class id {
         public static final int BrazilLabel=0x7f090009;
         public static final int BrazilView=0x7f09000b;
-        public static final int Button01=0x7f090024;
-        public static final int Button02=0x7f090023;
-        public static final int Button03=0x7f090030;
-        public static final int Button04=0x7f09002e;
-        public static final int Button05=0x7f09002f;
+        public static final int Button01=0x7f090025;
+        public static final int Button02=0x7f090024;
+        public static final int Button03=0x7f090031;
+        public static final int Button04=0x7f09002f;
+        public static final int Button05=0x7f090030;
         public static final int CategoryLabel=0x7f090004;
         public static final int CategoryView=0x7f090005;
-        public static final int CheckBox01=0x7f090028;
+        public static final int CheckBox01=0x7f090029;
         public static final int ChinaLabel=0x7f09000d;
         public static final int ChinaView=0x7f09000f;
         public static final int CostLabel=0x7f090002;
@@ -67,22 +67,23 @@ public final class R {
         public static final int NameView=0x7f090001;
         public static final int PakistanLabel=0x7f090019;
         public static final int PakistanView=0x7f09001b;
+        public static final int RemovePrompt=0x7f090022;
         public static final int SubcategoryLabel=0x7f090006;
         public static final int SubcategoryView=0x7f090007;
-        public static final int TextView01=0x7f090025;
-        public static final int TextView02=0x7f090026;
+        public static final int TextView01=0x7f090026;
+        public static final int TextView02=0x7f090027;
         public static final int TitleLabel=0x7f09001d;
-        public static final int action_settings=0x7f090031;
+        public static final int action_settings=0x7f090032;
         public static final int activity_main=0x7f09001c;
         public static final int box1=0x7f09001e;
         public static final int box2=0x7f09001f;
         public static final int category_spinner=0x7f090020;
-        public static final int checkBox1=0x7f09002b;
-        public static final int checkBox2=0x7f09002a;
-        public static final int checkBox3=0x7f090029;
-        public static final int checkBox4=0x7f090027;
-        public static final int delete_all=0x7f090032;
-        public static final int editText1=0x7f09002c;
+        public static final int checkBox1=0x7f09002c;
+        public static final int checkBox2=0x7f09002b;
+        public static final int checkBox3=0x7f09002a;
+        public static final int checkBox4=0x7f090028;
+        public static final int delete_all=0x7f090033;
+        public static final int editText1=0x7f09002d;
         public static final int imageView1=0x7f09000e;
         public static final int imageView2=0x7f09000a;
         public static final int imageView3=0x7f090016;
@@ -94,8 +95,8 @@ public final class R {
         public static final int tableRow3=0x7f090010;
         public static final int tableRow4=0x7f090014;
         public static final int tableRow5=0x7f090018;
-        public static final int textView1=0x7f090022;
-        public static final int textView2=0x7f09002d;
+        public static final int textView1=0x7f090023;
+        public static final int textView2=0x7f09002e;
     }
     public static final class layout {
         public static final int activity_detail=0x7f030000;
@@ -104,7 +105,8 @@ public final class R {
         public static final int delete_purchase=0x7f030003;
         public static final int list_fragment=0x7f030004;
         public static final int purchase=0x7f030005;
-        public static final int settings=0x7f030006;
+        public static final int remove_purchases=0x7f030006;
+        public static final int settings=0x7f030007;
     }
     public static final class menu {
         public static final int detail=0x7f080000;
