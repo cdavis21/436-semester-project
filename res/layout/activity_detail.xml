@@ -6,7 +6,8 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.worldstars.semesterproject436.DetailActivity" >
+    tools:context="com.worldstars.semesterproject436.DetailActivity" 
+    android:background="#FFF5A5">
 
     <LinearLayout
         android:layout_width="fill_parent"

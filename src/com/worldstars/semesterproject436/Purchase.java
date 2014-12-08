@@ -5,6 +5,7 @@ import android.content.Intent;
 public class Purchase {
 	public static final String ITEM_SEP = System.getProperty("line.separator");
 	private boolean REMOVE_ENABLED = false;
+	private boolean CLICKED = false;
 	
 	private String name;
 	private String cost;
@@ -88,6 +89,18 @@ public class Purchase {
 		REMOVE_ENABLED = true;
 		System.out.println("Enabled remove for item with data:");
 		System.out.println(this.toString());
+	}
+	
+	public void setClicked(){
+		CLICKED = true;
+	}
+	
+	public void setUnclicked(){
+		CLICKED = false;
+	}
+	
+	public boolean itemClicked(){
+		return CLICKED;
 	}
 	
 	public void disableRemove() {

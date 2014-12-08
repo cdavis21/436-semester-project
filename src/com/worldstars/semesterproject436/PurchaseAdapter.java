@@ -1,4 +1,5 @@
 package com.worldstars.semesterproject436;
+import java.text.NumberFormat;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -43,6 +44,16 @@ public class PurchaseAdapter extends BaseAdapter {
 		notifyDataSetChanged();
 	}
 	
+	public void setClicked(Purchase p){
+		p.setClicked();
+		notifyDataSetChanged();
+	}
+	
+	public void setUnclicked(Purchase p){
+		p.setUnclicked();
+		notifyDataSetChanged();
+	}
+	
 	public boolean oneItemIsSelected() {
 		if (purchasesToDelete.size() == 1) {
 			return true;
@@ -77,7 +88,7 @@ public class PurchaseAdapter extends BaseAdapter {
 	
 	@Override
 	public int getViewTypeCount() {
-		return 2;
+		return 3;
 	}
 	
 	@Override
@@ -85,7 +96,9 @@ public class PurchaseAdapter extends BaseAdapter {
 		Purchase p = (Purchase) getItem(position);
 		if (p.removeIsEnabled()) {
 			return 0;
-		} else {
+		} else if(p.itemClicked()) {
+			return 2;
+		}else{
 			return 1;
 		}
 	}
@@ -131,6 +144,28 @@ public class PurchaseAdapter extends BaseAdapter {
 				convertView = inflater.inflate(R.layout.delete_purchase, parent, false);
 			} else if (getItemViewType(position) == 1) {
 				convertView = inflater.inflate(R.layout.purchase, parent, false);
+			}else if (getItemViewType(position) == 2){
+				convertView = inflater.inflate(R.layout.activity_detail, parent, false);
+				
+				NumberFormat nf = NumberFormat.getCurrencyInstance();
+				
+				TextView tvChina = (TextView) convertView.findViewById(R.id.ChinaView);
+				tvChina.setText(nf.format((currentPurchase.calculateChina(currentPurchase.getCost()))));
+
+				TextView tvBrazil = (TextView) convertView.findViewById(R.id.BrazilView);
+				tvBrazil.setText(nf.format((currentPurchase.calculateBrazil(currentPurchase.getCost()))));
+
+				
+				TextView tvIndia = (TextView) convertView.findViewById(R.id.IndiaView);
+				tvIndia.setText(nf.format((currentPurchase.calculateIndia(currentPurchase.getCost()))));
+
+				
+				TextView tvIndonesia = (TextView) convertView.findViewById(R.id.IndonesiaView);
+				tvIndonesia.setText(nf.format((currentPurchase.calculateIndonesia(currentPurchase.getCost()))));
+
+				
+				TextView tvPakistan = (TextView) convertView.findViewById(R.id.PakistanView);
+				tvPakistan.setText(nf.format((currentPurchase.calculatePakistan(currentPurchase.getCost()))));
 			}
 			
 			vhp.imageView = (ImageView) convertView.findViewById(R.id.imageView1);
