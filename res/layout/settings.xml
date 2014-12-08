@@ -2,160 +2,180 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="#FFFFFF"
+    android:orientation="horizontal"
     tools:context="com.worldstars.semesterproject436.SettingsActivity" >
 
-    <TextView
-        android:id="@+id/textView1"
+    <CheckBox
+        android:id="@+id/indonesiaCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_above="@+id/pakistanCheckBox"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentTop="true"
-        android:layout_marginLeft="14dp"
-        android:layout_marginTop="31dp"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:layout_marginLeft="32dp"
+        android:checked="true"
+        android:text="Indonesia" />
 
-    <Button
-        android:id="@+id/Button02"
-        style="?android:attr/buttonStyleSmall"
+    <CheckBox
+        android:id="@+id/indiaCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/textView1"
-        android:layout_below="@+id/textView1"
-        android:background="#6CB5F4"
-        android:minHeight="35dip"
-        android:minWidth="35dip" />
+        android:layout_above="@+id/indonesiaCheckBox"
+        android:layout_alignLeft="@+id/indonesiaCheckBox"
+        android:checked="true"
+        android:text="India" />
 
-    <Button
-        android:id="@+id/Button01"
-        style="?android:attr/buttonStyleSmall"
+    <CheckBox
+        android:id="@+id/chinaCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/Button02"
-        android:layout_alignBottom="@+id/Button02"
-        android:layout_marginLeft="14dp"
-        android:layout_toRightOf="@+id/Button02"
-        android:background="#12D04B"
-        android:minHeight="35dip"
-        android:minWidth="35dip" />
+        android:layout_above="@+id/indiaCheckBox"
+        android:layout_alignLeft="@+id/indiaCheckBox"
+        android:checked="true"
+        android:text="China" />
 
-    <TextView
-        android:id="@+id/TextView01"
+    <CheckBox
+        android:id="@+id/pakistanCheckBox"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/Button02"
-        android:layout_below="@+id/Button02"
-        android:layout_marginTop="34dp"
-        android:text="Edit Diary Name:"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
+        android:layout_alignLeft="@+id/indonesiaCheckBox"
+        android:layout_alignParentBottom="true"
+        android:layout_marginBottom="14dp"
+        android:checked="true"
+        android:text="Pakistan" />
+
+    <CheckBox
+        android:id="@+id/brazilCheckBox"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/chinaCheckBox"
+        android:layout_alignLeft="@+id/chinaCheckBox"
+        android:checked="true"
+        android:text="Brazil" />
 
     <TextView
         android:id="@+id/TextView02"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/TextView01"
-        android:layout_centerVertical="true"
-        android:text="Select Countries:"
-        android:textAppearance="?android:attr/textAppearanceSmall" />
-
-    <CheckBox
-        android:id="@+id/checkBox4"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/CheckBox01"
-        android:layout_below="@+id/CheckBox01"
-        android:text="Pakistan" />
-
-    <CheckBox
-        android:id="@+id/CheckBox01"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/checkBox3"
-        android:layout_below="@+id/checkBox3"
-        android:text="Brazil" />
-
-    <CheckBox
-        android:id="@+id/checkBox3"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignRight="@+id/TextView02"
-        android:layout_below="@+id/checkBox2"
-        android:text="Indonesia" />
-
-    <CheckBox
-        android:id="@+id/checkBox2"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/checkBox3"
-        android:layout_below="@+id/checkBox1"
-        android:text="India" />
-
-    <CheckBox
-        android:id="@+id/checkBox1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/checkBox2"
-        android:layout_below="@+id/TextView02"
-        android:layout_marginTop="17dp"
-        android:text="China" />
-    
-    <EditText
-        android:id="@+id/editText1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_alignLeft="@+id/TextView01"
-        android:layout_below="@+id/TextView01"
-        android:ems="10">
-
-        <requestFocus />
-    </EditText>
+        android:layout_above="@+id/brazilCheckBox"
+        android:layout_alignLeft="@+id/brazilCheckBox"
+        android:text="Select Countries To Display:"
+        android:textColor="#000000"
+        android:textSize="18sp" />
 
     <TextView
         android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBottom="@+id/textView1"
-        android:layout_alignLeft="@+id/checkBox1"
-        android:layout_marginBottom="21dp"
-        android:text="Change Theme" />
+        android:layout_alignLeft="@+id/textView1"
+        android:layout_below="@+id/textView1"
+        android:layout_marginTop="53dp"
+        android:text="Edit Theme:"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
 
-    <Button
-        android:id="@+id/Button04"
-        style="?android:attr/buttonStyleSmall"
+    <ImageButton
+        android:id="@+id/imageButton2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/TextView01"
-        android:layout_toRightOf="@+id/checkBox4"
-        android:background="#CE95F0"
-        android:minHeight="35dip"
-        android:minWidth="35dip" />
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_below="@+id/textView2"
+        android:onClick="pushDefault"
+        android:src="@drawable/default_icon" />
 
-    <Button
-        android:id="@+id/Button05"
-        style="?android:attr/buttonStyleSmall"
+    <ImageButton
+        android:id="@+id/imageButton3"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_alignBaseline="@+id/Button04"
-        android:layout_alignBottom="@+id/Button04"
-        android:layout_marginLeft="16dp"
-        android:layout_toRightOf="@+id/Button04"
-        android:background="#F1D628"
-        android:minHeight="35dip"
-        android:minWidth="35dip" />
+        android:layout_alignBottom="@+id/imageButton2"
+        android:layout_below="@+id/textView2"
+        android:layout_toRightOf="@+id/imageButton2"
+        android:onClick="pushFish"
+        android:src="@drawable/fish_icon" />
 
-    <Button
-        android:id="@+id/Button03"
-        style="?android:attr/buttonStyleSmall"
+    <ImageButton
+        android:id="@+id/imageButton5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_above="@+id/TextView01"
-        android:layout_marginLeft="14dp"
-        android:layout_toRightOf="@+id/Button05"
-        android:background="#F02536"
-        android:minHeight="35dip"
-        android:minWidth="35dip" />
+        android:layout_alignLeft="@+id/textView2"
+        android:layout_below="@+id/imageButton2"
+        android:onClick="pushIcey"
+        android:src="@drawable/icey_icon" />
+
+    <EditText
+        android:id="@+id/settings_editText"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/textView2"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentTop="true"
+        android:layout_toRightOf="@+id/textView1"
+        android:ems="10" />
+
+    <TextView
+        android:id="@+id/textView1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/TextView02"
+        android:layout_alignParentTop="true"
+        android:layout_marginTop="16dp"
+        android:text="Edit Diary Name:"
+        android:textAppearance="?android:attr/textAppearanceMedium" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignLeft="@+id/textView2"
+        android:onClick="updateNameButton"
+        android:layout_below="@+id/textView1"
+        android:text="Update Name" />
+
+    <ImageButton
+        android:id="@+id/imageButton7"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageButton5"
+        android:layout_toRightOf="@+id/imageButton5"
+        android:onClick="pushRed"
+        android:src="@drawable/red_icon" />
+
+    <ImageButton
+        android:id="@+id/imageButton6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignTop="@+id/imageButton8"
+        android:layout_toRightOf="@+id/imageButton7"
+        android:onClick="pushCrayon"
+        android:src="@drawable/crayon_icon" />
+
+    <ImageButton
+        android:id="@+id/imageButton8"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/imageButton7"
+        android:layout_below="@+id/textView2"
+        android:layout_toRightOf="@+id/imageButton6"
+        android:onClick="pushSea"
+        android:src="@drawable/sea_icon" />
+
+    <ImageButton
+        android:id="@+id/imageButton4"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageButton7"
+        android:layout_below="@+id/imageButton6"
+        android:layout_toLeftOf="@+id/imageButton8"
+        android:onClick="pushGreen"
+        android:src="@drawable/green_icon" />
+
+    <ImageButton
+        android:id="@+id/ImageButton01"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/imageButton4"
+        android:layout_alignLeft="@+id/imageButton8"
+        android:layout_below="@+id/imageButton6"
+        android:onClick="pushCork"
+        android:src="@drawable/cork_icon" />
 
 </RelativeLayout>
