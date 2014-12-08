@@ -14,6 +14,7 @@ import android.widget.TextView;
 
 public class PurchaseAdapter extends BaseAdapter {
 	private final List<Purchase> purchases = new ArrayList<Purchase>();
+	private final List<Purchase> purchasesToDelete = new ArrayList<Purchase>();
 	private final Context context;
 	
 	public PurchaseAdapter(Context context) {
@@ -32,11 +33,30 @@ public class PurchaseAdapter extends BaseAdapter {
 	
 	public void enableRemove(Purchase p) {
 		p.enableRemove();
+		purchasesToDelete.add(p);
 		notifyDataSetChanged();
 	}
 	
 	public void disableRemove(Purchase p) {
 		p.disableRemove();
+		purchasesToDelete.remove(p);
+		notifyDataSetChanged();
+	}
+	
+	public boolean oneItemIsSelected() {
+		if (purchasesToDelete.size() == 1) {
+			return true;
+		} else {
+			return false;
+		}
+	}
+	
+	public void deleteAllSelected() {
+		for (Purchase p: purchasesToDelete) {
+			purchases.remove(p);
+		}
+		
+		purchasesToDelete.clear();
 		notifyDataSetChanged();
 	}
 	

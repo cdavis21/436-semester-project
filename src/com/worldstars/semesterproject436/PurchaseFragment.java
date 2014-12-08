@@ -35,38 +35,6 @@ public class PurchaseFragment extends ListFragment {
 		super.onCreate(savedInstanceState);
 		MainActivity.pAdapter = new PurchaseAdapter(getActivity());
 		setListAdapter(MainActivity.pAdapter);
-
-		/*ListView list = getListView();
-  	    final SwipeDetector swipeDetector = new SwipeDetector();
-  	    list.setOnTouchListener(swipeDetector);
-  	    list.setOnItemClickListener(new OnItemClickListener() {
-  	        public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-  	                if (swipeDetector.getAction().equals(Action.RL)){
-  	                    // do the onSwipe action
-  	                	MainActivity.pAdapter.clear();
-  	                	Toast.makeText(getActivity().getApplicationContext(), "swiped right-left!", Toast.LENGTH_LONG).show();
-  	                } else {
-  	                    // do the onItemClick action
-  	                	Toast.makeText(getActivity().getApplicationContext(), "short item click!", Toast.LENGTH_LONG).show();
-  	                }
-  	            }
-  	    });
-  	    list.setOnItemLongClickListener(new OnItemLongClickListener() {
-  	        @Override
-  	        public boolean onItemLongClick(AdapterView<?> parent, View view,int position, long id) {
-  	            if (swipeDetector.getAction().equals(Action.RL)){
-  	                // do the onSwipe action 
-  	            	MainActivity.pAdapter.clear();
-  	            	Toast.makeText(getActivity().getBaseContext(), "swiped!", Toast.LENGTH_LONG).show();
-  	            } else {
-  	                // do the onItemLongClick action
-  	            	Toast.makeText(getActivity().getBaseContext(), "long item click!!", Toast.LENGTH_LONG).show();
-  	            }
-
-  	            return true;
-  	        }
-  	    });
-		 */
 	}
 
 	@Override
