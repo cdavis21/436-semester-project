@@ -105,9 +105,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
     		getSupportFragmentManager().beginTransaction().replace(R.id.activity_main, purchaseFrag).commit();
     	}else if (tab.getPosition() == 1) {
     		current = 1;  	 
-    		getFragmentManager().beginTransaction().replace(R.id.activity_main, addFrag).commit();
-    		itemDialog().show();
-    	 	//itemDialog().show();
+    		getSupportFragmentManager().beginTransaction().replace(R.id.activity_main, purchaseFrag).commit();
+    	 	itemDialog().show();
     	}else{
     		current = 2;
     		getFragmentManager().beginTransaction().replace(R.id.activity_main, settingsFrag).commit();
@@ -207,7 +206,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 					image = R.drawable.electronics;
 				}
 				
-				Pattern validPricing = Pattern.compile("^([0-9]*).([0-9][0-9])$");
+				Pattern validPricing = Pattern.compile("(^([0-9]*).([0-9][0-9])$)|(^[1-9]+[0-9]*$)");
 				Matcher pricingMatcher = validPricing.matcher(itemPrice);
 				
 				if (pricingMatcher.find()) {
