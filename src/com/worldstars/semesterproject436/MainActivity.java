@@ -345,6 +345,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 			prompt.setText("Are you sure that you would like to remove all selected purchases?");
 		}*/
 		//prompt.setText("SET TEXT TEST");
+		builder.setView(v);
 		builder.setPositiveButton("Cancel", new DialogInterface.OnClickListener() {
 			public void onClick(DialogInterface dialog, int id) {
 				Log.i(TAG, "canceled");
