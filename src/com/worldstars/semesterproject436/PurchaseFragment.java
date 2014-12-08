@@ -61,10 +61,10 @@ public class PurchaseFragment extends ListFragment {
 					// do the onItemClick action
 					Toast.makeText(getActivity().getApplicationContext(), "short item click!", Toast.LENGTH_LONG).show();
 					System.out.println(MainActivity.pAdapter.getItem(position).toString());
+					Intent intent = p.packageToIntent();
+					intent.setClass(getActivity().getApplicationContext(), DetailActivity.class);
+					startActivity(intent);
 				}
-				Intent intent = p.packageToIntent();
-				intent.setClass(getActivity().getApplicationContext(), DetailActivity.class);
-				startActivity(intent);
 			}
 		});
 		list.setOnItemLongClickListener(new OnItemLongClickListener() {
@@ -80,6 +80,9 @@ public class PurchaseFragment extends ListFragment {
 				} else {
 					// do the onItemLongClick action
 					Toast.makeText(getActivity().getBaseContext(), "long item click!!", Toast.LENGTH_LONG).show();
+					Intent intent = p.packageToIntent();
+					intent.setClass(getActivity().getApplicationContext(), DetailActivity.class);
+					startActivity(intent);
 				}
 
 				return true;
