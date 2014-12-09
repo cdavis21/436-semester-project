@@ -43,5 +43,12 @@
     <string name="country_4">Brazil:</string>
     <string name="country_5">Pakistan:</string>
     <!-- end of Detail activity -->
+    
+    <!-- Settings Checkbox -->
+    <string name="checkbox_china">China</string>
+    <string name="checkbox_indonesia">Indonesia</string>
+    <string name="checkbox_india">India</string>
+    <string name="checkbox_brazil">Brazil</string>
+    <string name="checkbox_pakistan">Pakistan</string>
 
 </resources>

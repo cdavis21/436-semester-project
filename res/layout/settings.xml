@@ -14,7 +14,8 @@
         android:layout_alignParentLeft="true"
         android:layout_marginLeft="32dp"
         android:checked="true"
-        android:text="Indonesia" />
+        android:onClick="selectIndonesia"
+        android:text="@string/checkbox_indonesia" />
 
     <CheckBox
         android:id="@+id/indiaCheckBox"
@@ -22,8 +23,9 @@
         android:layout_height="wrap_content"
         android:layout_above="@+id/indonesiaCheckBox"
         android:layout_alignLeft="@+id/indonesiaCheckBox"
+        android:onClick="selectIndia"
         android:checked="true"
-        android:text="India" />
+        android:text="@string/checkbox_india" />
 
     <CheckBox
         android:id="@+id/chinaCheckBox"
@@ -32,7 +34,8 @@
         android:layout_above="@+id/indiaCheckBox"
         android:layout_alignLeft="@+id/indiaCheckBox"
         android:checked="true"
-        android:text="China" />
+        android:onClick="selectChina"
+        android:text="@string/checkbox_china" />
 
     <CheckBox
         android:id="@+id/pakistanCheckBox"
@@ -42,7 +45,8 @@
         android:layout_alignParentBottom="true"
         android:layout_marginBottom="14dp"
         android:checked="true"
-        android:text="Pakistan" />
+        android:onClick="selectPakistan"
+        android:text="@string/checkbox_pakistan" />
 
     <CheckBox
         android:id="@+id/brazilCheckBox"
@@ -51,7 +55,8 @@
         android:layout_above="@+id/chinaCheckBox"
         android:layout_alignLeft="@+id/chinaCheckBox"
         android:checked="true"
-        android:text="Brazil" />
+        android:onClick="selectBrazil"
+        android:text="@string/checkbox_brazil" />
 
     <TextView
         android:id="@+id/TextView02"

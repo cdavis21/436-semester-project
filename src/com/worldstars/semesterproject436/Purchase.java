@@ -119,29 +119,29 @@ public class Purchase {
 	
 	public double calculateChina(String cost){
 		Double numCost = Double.parseDouble(cost);
-		numCost *= .6;
+		
 		return numCost* .6 ;
 		
 	}
 	public double calculateBrazil(String cost){
 		Double numCost = Double.parseDouble(cost);
-		numCost *= .6;
+	
 		return numCost* .7 ;
 		
 	}
 	public double calculateIndia(String cost){
 		Double numCost = Double.parseDouble(cost);
-		numCost *= .6;
+		
 		return numCost* .3 ;
 		
 	}public double calculateIndonesia(String cost){
 		Double numCost = Double.parseDouble(cost);
-		numCost *= .6;
+		
 		return numCost* .4 ;
 		
 	}public double calculatePakistan(String cost){
 		Double numCost = Double.parseDouble(cost);
-		numCost *= .6;
+		
 		return numCost* .3 ;
 		
 	}
