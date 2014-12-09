@@ -4,6 +4,7 @@
     <string name="app_name">Cost of Living Journal</string>
     <string name="hello_world">Hello world!</string>
     <string name="action_settings">Settings</string>
+    <string name="LoadSettings">Load settings</string>
     <string name="delete_all">Delete all items</string>
 
     <!-- options menu: temporary -->

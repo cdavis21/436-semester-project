@@ -121,6 +121,7 @@ public final class R {
         public static final int tableRow3=0x7f090011;
         public static final int tableRow4=0x7f090015;
         public static final int tableRow5=0x7f090019;
+        public static final int temp=0x7f090038;
         public static final int textView1=0x7f09002b;
         public static final int textView2=0x7f09002a;
     }
@@ -140,43 +141,44 @@ public final class R {
         public static final int main=0x7f080001;
     }
     public static final class string {
+        public static final int LoadSettings=0x7f060003;
         /**  end of options menu 
  dialog text 
          */
-        public static final int TEST_TEXT=0x7f060008;
+        public static final int TEST_TEXT=0x7f060009;
         public static final int action_settings=0x7f060002;
         /**  options menu: temporary 
          */
-        public static final int add_item=0x7f060004;
-        public static final int add_item_string=0x7f060012;
-        public static final int add_price_string=0x7f060013;
+        public static final int add_item=0x7f060005;
+        public static final int add_item_string=0x7f060013;
+        public static final int add_price_string=0x7f060014;
         public static final int app_name=0x7f060000;
-        public static final int budget=0x7f060005;
-        public static final int category_label=0x7f06000f;
-        public static final int cost_label=0x7f06000e;
+        public static final int budget=0x7f060006;
+        public static final int category_label=0x7f060010;
+        public static final int cost_label=0x7f06000f;
         /**  Detail Activity 
          */
-        public static final int country_1=0x7f060014;
-        public static final int country_2=0x7f060015;
-        public static final int country_3=0x7f060016;
-        public static final int country_4=0x7f060017;
-        public static final int country_5=0x7f060018;
-        public static final int delete_all=0x7f060003;
-        public static final int delete_title=0x7f06000c;
-        public static final int filter=0x7f060006;
+        public static final int country_1=0x7f060015;
+        public static final int country_2=0x7f060016;
+        public static final int country_3=0x7f060017;
+        public static final int country_4=0x7f060018;
+        public static final int country_5=0x7f060019;
+        public static final int delete_all=0x7f060004;
+        public static final int delete_title=0x7f06000d;
+        public static final int filter=0x7f060007;
         public static final int hello_world=0x7f060001;
-        public static final int item_cost=0x7f06000b;
-        public static final int item_name=0x7f06000a;
-        public static final int list=0x7f060007;
+        public static final int item_cost=0x7f06000c;
+        public static final int item_name=0x7f06000b;
+        public static final int list=0x7f060008;
         /**  end of dialog text 
  purchases view 
          */
-        public static final int name_label=0x7f06000d;
-        public static final int subcategory_label=0x7f060010;
-        public static final int title=0x7f060009;
+        public static final int name_label=0x7f06000e;
+        public static final int subcategory_label=0x7f060011;
+        public static final int title=0x7f06000a;
         /**  end of purchases view 
          */
-        public static final int title_activity_detail=0x7f060011;
+        public static final int title_activity_detail=0x7f060012;
     }
     public static final class style {
         /** 

@@ -1,5 +1,14 @@
 package com.worldstars.semesterproject436;
 
+import java.io.BufferedReader;
+import java.io.BufferedWriter;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
+import java.io.InputStreamReader;
+import java.io.OutputStreamWriter;
+import java.io.PrintWriter;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
@@ -16,6 +25,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.CheckBox;
 import android.widget.EditText;
 import android.widget.Spinner;
 import android.widget.Toast;
@@ -23,6 +33,13 @@ import android.widget.Toast;
 // Jazmyn Comment
 public class MainActivity extends FragmentActivity implements ActionBar.TabListener{
 	public static final String TAG = "Semester Project";
+	private final String FILE_SETTINGS = "UserSettings.txt";
+	
+	public enum SelectedTheme {
+		THEME_GRAPH, THEME_FISH, THEME_CRAYONS,
+		THEME_OCEAN, THEME_ICE, THEME_BBOARD, 
+		THEME_PAPER, THEME_CORK
+	}
 
 	static PurchaseFragment purchaseFrag;
 	private SettingsFragment settingsFrag;
@@ -40,6 +57,16 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	Tab purchaseTab;
 	boolean cancel_clicked;
 
+	// Variables for storing user settings
+	private static String USER_NAME = "Cost of Living Journal";
+	private SelectedTheme userTheme = SelectedTheme.THEME_GRAPH;
+	
+	private boolean enabledBrazil = true;
+	private boolean enabledChina = true;
+	private boolean enabledIndia = true;
+	private boolean enabledIndonesia = true;
+	private boolean enabledPakistan = true;
+	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
@@ -60,8 +87,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		// Screen handling while hiding Actionbar title.
 		//actionBar.setDisplayShowTitleEnabled(false);
 
-		getWindow().getDecorView().setBackgroundResource(R.drawable.schooltheme); //change layout to default
-
+		//getWindow().getDecorView().setBackgroundResource(R.drawable.schooltheme); //change layout to default
+		
 		// Creating ActionBar tabs.
 		actionBar.setNavigationMode(ActionBar.NAVIGATION_MODE_TABS);
 		
@@ -82,49 +109,73 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
 		// Get a reference to the EditText field
 		// Save user provided input from the EditText field
-		String diary_name = mEditText.getText().toString();	
-		getActionBar().setTitle(diary_name);
-
+		String diary_name = mEditText.getText().toString();
+		USER_NAME = diary_name;
+		//getActionBar().setTitle(diary_name);
+		saveSettings();
+		renderSettings();
 	}
 
 
 	public void pushCork(View view) {
-		getWindow().getDecorView().setBackgroundResource(R.drawable.corkie);
-
+		//getWindow().getDecorView().setBackgroundResource(R.drawable.corkie);
+		userTheme = SelectedTheme.THEME_CORK;
+		saveSettings();
+		renderSettings();
 	}
 
 	//Change Theme of the app
 	public void pushDefault(View view) {
-		getWindow().getDecorView().setBackgroundResource(R.drawable.schooltheme);
+		//getWindow().getDecorView().setBackgroundResource(R.drawable.schooltheme);
+		userTheme = SelectedTheme.THEME_GRAPH;
+		saveSettings();
+		renderSettings();
 	}
 
 	public void pushFish(View view) {
-		getWindow().getDecorView().setBackgroundResource(R.drawable.aquariumtheme);
+		//getWindow().getDecorView().setBackgroundResource(R.drawable.aquariumtheme);
+		userTheme = SelectedTheme.THEME_FISH;
+		saveSettings();
+		renderSettings();
 	}
 
 
 
 	public void pushGreen(View view) {
-		getWindow().getDecorView().setBackgroundResource(R.drawable.greenpolka);
-
+		//getWindow().getDecorView().setBackgroundResource(R.drawable.greenpolka);
+		userTheme = SelectedTheme.THEME_PAPER;
+		saveSettings();
+		renderSettings();
 	}
 
 	public void pushIcey(View view) {
-		getWindow().getDecorView().setBackgroundResource(R.drawable.eskimotheme);
+		//getWindow().getDecorView().setBackgroundResource(R.drawable.eskimotheme);
+		userTheme = SelectedTheme.THEME_ICE;
+		saveSettings();
+		renderSettings();
 	}
 
 
 	public void pushCrayon(View view) {
-		getWindow().getDecorView().setBackgroundResource(R.drawable.crayons);
+		//getWindow().getDecorView().setBackgroundResource(R.drawable.crayons);
+		userTheme = SelectedTheme.THEME_CRAYONS;
+		saveSettings();
+		renderSettings();
 	}
 
 
 	public void pushRed(View view) {
-		getWindow().getDecorView().setBackgroundResource(R.drawable.board);
+		//getWindow().getDecorView().setBackgroundResource(R.drawable.board);
+		userTheme = SelectedTheme.THEME_BBOARD;
+		saveSettings();
+		renderSettings();
 	}
 
 	public void pushSea(View view) {
-		getWindow().getDecorView().setBackgroundResource(R.drawable.sea);
+		//getWindow().getDecorView().setBackgroundResource(R.drawable.sea);
+		userTheme = SelectedTheme.THEME_BBOARD;
+		saveSettings();
+		renderSettings();
 	}
 
 
@@ -144,6 +195,8 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	@Override
 	protected void onResume() {
 		super.onResume();
+		//loadSettings();
+		renderSettings();
 	}
 
 	@Override
@@ -378,7 +431,10 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		// automatically handle clicks on the Home/Up button, so long
 		// as you specify a parent activity in AndroidManifest.xml.
 		int id = item.getItemId();
-		if (id == R.id.action_settings) {
+		if (id == R.id.temp) {
+			loadSettings();
+			renderSettings();
+		} else if (id == R.id.action_settings) {
 			itemDialog().show();
 			return true;
 		} else if (id == R.id.delete_all) {
@@ -388,6 +444,111 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		return super.onOptionsItemSelected(item);
 	}
 
+	private void loadSettings() {
+		BufferedReader reader = null;
+		
+		try {
+			FileInputStream inputStream = openFileInput(FILE_SETTINGS);
+			reader = new BufferedReader(new InputStreamReader(inputStream));
+			
+			USER_NAME = reader.readLine();
+			userTheme = SelectedTheme.valueOf(reader.readLine());
+			enabledBrazil = Boolean.valueOf(reader.readLine());
+			Log.i(TAG, "" + enabledBrazil);
+			enabledChina = Boolean.valueOf(reader.readLine());
+			enabledIndia = Boolean.valueOf(reader.readLine());
+			enabledIndonesia = Boolean.valueOf(reader.readLine());
+			enabledPakistan = Boolean.valueOf(reader.readLine());
+			/*while ((USER_NAME = reader.readLine()) != null) {
+				String s = reader.readLine();
+				Log.i(TAG, s);
+				userTheme = SelectedTheme.valueOf(s);
+				//Log.i(TAG, reader.readLine());
+				
+				//userTheme = SelectedTheme.valueOf(reader.readLine());
+				/*enabledBrazil = Boolean.valueOf(reader.readLine());
+				enabledChina = Boolean.valueOf(reader.readLine());
+				enabledIndia = Boolean.valueOf(reader.readLine());
+				enabledIndonesia = Boolean.valueOf(reader.readLine());
+				enabledPakistan = Boolean.valueOf(reader.readLine());
+				
+			}*/
+		} catch (FileNotFoundException e) {
+			e.printStackTrace();
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (reader != null) {
+				try {
+					reader.close();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+			}
+		}
+	}
+	
+	private void saveSettings() {
+		PrintWriter pWriter = null;
+		
+		try {
+			FileOutputStream outputStream = openFileOutput(FILE_SETTINGS, MODE_PRIVATE);
+			pWriter = new PrintWriter(new BufferedWriter(new OutputStreamWriter(outputStream)));
+			
+			pWriter.println(USER_NAME);
+			pWriter.println(userTheme.toString());
+			pWriter.println(enabledBrazil);
+			pWriter.println(enabledChina);
+			pWriter.println(enabledIndia);
+			pWriter.println(enabledIndonesia);
+			pWriter.println(enabledPakistan);
+		} catch (IOException e) {
+			e.printStackTrace();
+		} finally {
+			if (pWriter != null) {
+				pWriter.close();
+			}
+		}
+	}
+	
+	public void renderSettings() {
+		getActionBar().setTitle(USER_NAME);
+		
+		switch(userTheme) {
+		case THEME_GRAPH:
+			getWindow().getDecorView().setBackgroundResource(R.drawable.schooltheme);
+			break;
+		case THEME_FISH:
+			getWindow().getDecorView().setBackgroundResource(R.drawable.aquariumtheme);
+			break;
+		case THEME_CRAYONS:
+			getWindow().getDecorView().setBackgroundResource(R.drawable.crayons);
+			break;
+		case THEME_OCEAN:
+			getWindow().getDecorView().setBackgroundResource(R.drawable.sea);
+			break;
+		case THEME_ICE:
+			getWindow().getDecorView().setBackgroundResource(R.drawable.eskimotheme);
+			break;
+		case THEME_BBOARD:
+			getWindow().getDecorView().setBackgroundResource(R.drawable.board);
+			break;
+		case THEME_PAPER:
+			getWindow().getDecorView().setBackgroundResource(R.drawable.greenpolka);
+			break;
+		case THEME_CORK:
+			getWindow().getDecorView().setBackgroundResource(R.drawable.corkie);
+			break;
+		}
+		
+		final View v = getLayoutInflater().inflate(R.layout.settings, null);
+		((CheckBox) v.findViewById(R.id.brazilCheckBox)).setChecked(enabledBrazil);
+		((CheckBox) v.findViewById(R.id.chinaCheckBox)).setChecked(enabledChina);
+		((CheckBox) v.findViewById(R.id.indiaCheckBox)).setChecked(enabledIndia);
+		((CheckBox) v.findViewById(R.id.indonesiaCheckBox)).setChecked(enabledIndonesia);
+		((CheckBox) v.findViewById(R.id.pakistanCheckBox)).setChecked(enabledPakistan);
+	}
+	
 	public void hackyTest(View v) {
 		deleteDialog().show();
 	}
