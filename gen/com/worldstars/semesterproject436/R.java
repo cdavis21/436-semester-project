@@ -155,6 +155,14 @@ public final class R {
         public static final int app_name=0x7f060000;
         public static final int budget=0x7f060006;
         public static final int category_label=0x7f060010;
+        public static final int checkbox_brazil=0x7f06001d;
+        /**  end of Detail activity 
+ Settings Checkbox 
+         */
+        public static final int checkbox_china=0x7f06001a;
+        public static final int checkbox_india=0x7f06001c;
+        public static final int checkbox_indonesia=0x7f06001b;
+        public static final int checkbox_pakistan=0x7f06001e;
         public static final int cost_label=0x7f06000f;
         /**  Detail Activity 
          */

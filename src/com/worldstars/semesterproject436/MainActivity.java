@@ -17,7 +17,9 @@ import android.app.ActionBar.Tab;
 import android.app.AlertDialog;
 import android.app.FragmentTransaction;
 import android.content.DialogInterface;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.FragmentActivity;
 import android.util.Log;
 import android.view.Menu;
@@ -61,11 +63,14 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	private static String USER_NAME = "Cost of Living Journal";
 	private SelectedTheme userTheme = SelectedTheme.THEME_GRAPH;
 	
-	private boolean enabledBrazil = true;
-	private boolean enabledChina = true;
-	private boolean enabledIndia = true;
-	private boolean enabledIndonesia = true;
-	private boolean enabledPakistan = true;
+	public static boolean enabledBrazil = true;
+	public static boolean enabledChina = true;
+	public static boolean enabledIndia = true;
+	public static boolean enabledIndonesia = true;
+	public static boolean enabledPakistan = true;
+	
+	
+	private SharedPreferences pref;
 	
 	@Override
 	protected void onCreate(Bundle savedInstanceState) {
@@ -99,9 +104,62 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 		actionBar.addTab(actionBar.newTab().setIcon(R.drawable.plussign).setTabListener(this));
 		actionBar.addTab(actionBar.newTab().setIcon(R.drawable.settings).setTabListener(this));
 		
+		//pref = PreferenceManager.getDefaultSharedPreferences(this);
+	/*
+		SharedPreferences.Editor editor = pref.edit();
+		 editor.putString("Brazil_Status","true");
+		 editor.putString("China_Status","true");
+		 editor.putString("India_Status","true");
+		 editor.putString("Indonesia_Status","true");
+		 editor.putString("Pakistan_Status","true");
+		 editor.apply();
+		*/
 		cancel_clicked = false;
-
 	} 
+	
+	public void selectBrazil(View v) {
+		if (enabledBrazil) {
+			enabledBrazil = false;
+		} else {
+			enabledBrazil = true;
+		}
+		renderSettings();
+	}
+	
+	public void selectChina(View v) {
+		if (enabledChina) {
+			enabledChina = false;
+		} else {
+			enabledChina = true;
+		}
+		renderSettings();
+	}
+	public void selectIndia(View v) {
+		if (enabledIndia) {
+			enabledIndia = false;
+		} else {
+			enabledIndia = true;
+		}
+		renderSettings();
+	}
+	
+	public void selectIndonesia(View v) {
+		if (enabledIndonesia) {
+			enabledIndonesia = false;
+		} else {
+			enabledIndonesia = true;
+		}
+		renderSettings();
+	}
+	
+	public void selectPakistan(View v) {
+		if (enabledPakistan) {
+			enabledPakistan = false;
+		} else {
+			enabledPakistan = true;
+		}
+		renderSettings();
+	}
 
 	public void updateNameButton(View view) {
 
@@ -195,7 +253,7 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 	@Override
 	protected void onResume() {
 		super.onResume();
-		//loadSettings();
+		loadSettings();
 		renderSettings();
 	}
 
@@ -256,6 +314,12 @@ public class MainActivity extends FragmentActivity implements ActionBar.TabListe
 
 	@Override
 	public void onTabReselected(ActionBar.Tab tab, FragmentTransaction fragmentTransaction) {
+		if(tab.getPosition()==1){
+			current =1;
+			getFragmentManager().beginTransaction().remove(detailFrag).commit();
+			getSupportFragmentManager().beginTransaction().replace(R.id.activity_main, purchaseFrag).commit();
+			itemDialog().show();
+		}
 	}
 
 	public AlertDialog itemDialog() {
