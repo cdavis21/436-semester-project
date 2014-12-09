@@ -168,7 +168,7 @@ public class PurchaseAdapter extends BaseAdapter {
 				tvPakistan.setText(nf.format((currentPurchase.calculatePakistan(currentPurchase.getCost()))));
 			}
 			
-			vhp.imageView = (ImageView) convertView.findViewById(R.id.imageView1);
+			vhp.imageView = (ImageView) convertView.findViewById(R.id.imageView0);
 			vhp.nameView = (TextView) convertView.findViewById(R.id.NameView);
 			vhp.costView = (TextView) convertView.findViewById(R.id.CostView);
 			vhp.categoryView = (TextView) convertView.findViewById(R.id.CategoryView);
