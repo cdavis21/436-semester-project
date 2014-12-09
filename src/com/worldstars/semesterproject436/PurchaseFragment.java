@@ -54,13 +54,13 @@ public class PurchaseFragment extends ListFragment {
 					// do the onSwipe action
 					//MainActivity.pAdapter.clear();
 					MainActivity.pAdapter.enableRemove(p);
-					Toast.makeText(getActivity().getApplicationContext(), "swiped right-left!", Toast.LENGTH_LONG).show();
+					//Toast.makeText(getActivity().getApplicationContext(), "swiped right-left!", Toast.LENGTH_LONG).show();
 				} else if (swipeDetector.getAction().equals(SwipeDetector.Action.LR)) {
 					MainActivity.pAdapter.disableRemove(p);
-					Toast.makeText(getActivity().getApplicationContext(), "swiped left-right!", Toast.LENGTH_LONG).show();
+					//Toast.makeText(getActivity().getApplicationContext(), "swiped left-right!", Toast.LENGTH_LONG).show();
 				} else {
 					// do the onItemClick action
-					Toast.makeText(getActivity().getApplicationContext(), "short item click!", Toast.LENGTH_LONG).show();
+					//Toast.makeText(getActivity().getApplicationContext(), "short item click!", Toast.LENGTH_LONG).show();
 					
 					/*itemClicked = true;
 					Bundle bundle = new Bundle();
@@ -88,13 +88,13 @@ public class PurchaseFragment extends ListFragment {
 				Purchase p = (Purchase) MainActivity.pAdapter.getItem(position);
 				if (swipeDetector.getAction().equals(SwipeDetector.Action.RL)){
 					MainActivity.pAdapter.enableRemove(p);
-					Toast.makeText(getActivity().getBaseContext(), "long swiped right-left!", Toast.LENGTH_LONG).show();
+					//Toast.makeText(getActivity().getBaseContext(), "long swiped right-left!", s.LENGTH_LONG).show();
 				}  else if (swipeDetector.getAction().equals(SwipeDetector.Action.LR)) {
 					MainActivity.pAdapter.disableRemove(p);
-					Toast.makeText(getActivity().getBaseContext(), "long swiped left-right!", Toast.LENGTH_LONG).show();
+					//Toast.makeText(getActivity().getBaseContext(), "long swiped left-right!", Toast.LENGTH_LONG).show();
 				} else {
 					// do the onItemLongClick action
-					Toast.makeText(getActivity().getBaseContext(), "long item click!!", Toast.LENGTH_LONG).show();
+					//Toast.makeText(getActivity().getBaseContext(), "long item click!!", Toast.LENGTH_LONG).show();
 
 					/*itemClicked = true;
 					Bundle bundle = new Bundle();
