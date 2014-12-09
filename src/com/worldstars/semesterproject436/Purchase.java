@@ -34,6 +34,7 @@ public class Purchase {
 		this.cost = intent.getStringExtra("cost");
 		this.category = intent.getStringExtra("category");
 		this.subcategory = intent.getStringExtra("subcategory");
+		this.icon = intent.getIntExtra("icon", 0);
 	}
 	
 	public Intent packageToIntent() {

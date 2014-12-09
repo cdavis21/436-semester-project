@@ -3,13 +3,11 @@ package com.worldstars.semesterproject436;
 import java.text.NumberFormat;
 
 import android.app.Fragment;
-import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcel;
-import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 public class DetailFragment extends Fragment{
@@ -68,6 +66,9 @@ public class DetailFragment extends Fragment{
 			
 			TextView tvIndonesia = (TextView) view.findViewById(R.id.IndonesiaView);
 			tvIndonesia.setText(nf.format((p.calculateIndonesia(p.getCost()))));
+			
+			ImageView ivPitcha = (ImageView) view.findViewById(R.id.imageView0);
+			ivPitcha.setImageResource(p.getIcon());
 
 			
 			TextView tvPakistan = (TextView) view.findViewById(R.id.PakistanView);
